@@ -1,0 +1,22 @@
+.ShopTop{
+    
+}
+.ShopTop>p{
+    text-align: left;
+    padding-left: 5%;
+    font-size: 24px;
+    font-weight: 700;
+}
+.ShopTop>input{
+    width: 90%;
+    height: 50px;
+    background-color: #D6EEFF;
+    border-radius: 20px;
+    border: none;
+}
+.ShopSection {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

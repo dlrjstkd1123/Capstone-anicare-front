@@ -1,37 +1,99 @@
 .App {
   text-align: center;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
+.MainTopNav {
+  padding: 0px;
+  font-size: 32px;
+  color: #45A8F0;
+  font-weight: 700;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid #E4E0E0;
+  background-color: white;
+  transition: opacity 0.5s ease;
+}
+
+.MainTopNav.hidden {
+  opacity: 0;
+  /* 스크롤 위치에 따라 투명도를 조절하여 요소를 사라지게 함 */
   pointer-events: none;
+  /* 숨겨진 요소에 이벤트를 비활성화하여 클릭 등의 상호 작용을 막음 */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.MainBottomNav {
+  position: fixed;
+  bottom: 0;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #45A8F0;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+.box {
+  width: 90%;
+  height: 130px;
+  border: 2px solid #D6EEFF;
+  margin-top: 30px;
+  border-radius: 20px;
+  background-color: #D6EEFF;
+
+}
+
+.boxcontainer {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.MainLogo {
+  text-align: left;
+  padding-left: 5%;
+}
+
+.MainInput {
+  width: 90%;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 13px;
+  background-color: #D6EEFF;
+  border: 1px solid #45A8F0;
+}
+
+.MainList {
+  width: 18%;
+  height: 50px;
+  border: 1px solid #45A8F0;
+  border-radius: 10px;
+
+}
+
+.MainListContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 5%;
+
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
