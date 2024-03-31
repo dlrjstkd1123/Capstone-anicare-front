@@ -11,7 +11,7 @@
     width: 90%;
     height: 50px;
     background-color: #D6EEFF;
-    border-radius: 20px;
+    border-radius: 13px;
     border: none;
 }
 .ShopSection {
@@ -19,4 +19,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+.ShopButton{
+    width: 33.3%;
+    height: 45px;
+    
   }

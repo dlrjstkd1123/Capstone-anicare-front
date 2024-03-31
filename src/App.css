@@ -43,7 +43,7 @@
 
 .box {
   width: 90%;
-  height: 130px;
+  height: 180px;
   border: 2px solid #D6EEFF;
   margin-top: 30px;
   border-radius: 20px;
@@ -87,6 +87,25 @@
   padding-right: 5%;
   margin-top: 5%;
 
+}
+
+input::placeholder {
+
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.MainTopLogoBox input {
+  padding-left: 20px;
+  /* 왼쪽 여백을 조절합니다. */
+  box-sizing: border-box;
+  font-weight: 600;
+}
+.ShopTop input{
+  padding-left: 20px;
+  /* 왼쪽 여백을 조절합니다. */
+  box-sizing: border-box;
+  font-weight: 600;
 }
 
 @keyframes App-logo-spin {

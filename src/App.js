@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import Login from './component/logincomponent';
 import ShopPage from './component/shoppage';
 import SignUp from './component/signup';
+import VaccinPage from './component/vaccin';
 function App() {
 
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path="/main" element={<MainPage />}></Route>
         <Route path="/signup" element={<SignUp/>}></Route>
         <Route path="/shop" element={<ShopPage/>}></Route>
-
+        <Route path="/vaccin" element={<VaccinPage/>}></Route>
 
       </Routes>
     </div>

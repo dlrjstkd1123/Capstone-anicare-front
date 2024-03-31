@@ -4,7 +4,7 @@ function Main() {
         <div>
             <div className='MainTopLogoBox'>
                 <h2 style={{ paddingTop: "110px" }} className='MainLogo'>Search for a pet</h2>
-                <input type="text" placeholder="search" className='MainInput'></input>
+                <input type="text" placeholder="Search..." className='MainInput'></input>
             </div>
             <div className='MainSectionLogoBox'>
                 <div className='MainListContainer'>
@@ -14,7 +14,7 @@ function Main() {
                     <div className='MainList'></div>
                     <div className='MainList'></div>
                 </div>
-                <h3 className='MainSectionLogo' style={{textAlign:"left",paddingLeft:"aa5%",marginBottom:"-10px"}}>Feacturd pets</h3>
+                <h3 className='MainSectionLogo' style={{textAlign:"left",paddingLeft:"5%",marginBottom:"-10px"}}>Feacturd pets</h3>
 
             </div>
             <div className='boxcontainer'>

@@ -43,12 +43,12 @@ function ShopPage() {
             <div className='ShopContainer' style={{ paddingTop: "110px" }}>
                 <div className='ShopTop'>
                     <p>Search for a product</p>
-                    <input type="text" placeholder='Search' />
+                    <input type="text" placeholder='Search...' />
                     <ButtonGroup variant="contained" aria-label="Basic button group"
                         style={{ width: "70%", backgroundColor: "#45A8F0", marginTop: "20px" }}>
-                        <Button style={{ width: "33%", backgroundColor: "#45A8F0", fontWeight: "600" }}>장난감</Button>
-                        <Button style={{ width: "33%", backgroundColor: "#45A8F0", fontWeight: "600" }}>간식</Button>
-                        <Button style={{ width: "33%", backgroundColor: "#45A8F0", fontWeight: "600" }}>편리용품</Button>
+                        <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }}className='ShopButton'>장난감</Button>
+                        <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }}className='ShopButton'>간식</Button>
+                        <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }}className='ShopButton'>편리용품</Button>
                     </ButtonGroup>
 
                 </div>
