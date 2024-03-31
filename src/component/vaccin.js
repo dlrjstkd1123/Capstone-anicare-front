@@ -105,7 +105,7 @@ function VaccinPage() {
                 <Grid item xs={6}>
                     <button className={vaccinyn === 1 ? "VaccinSelected" : ""} onClick={()=>{
                         SetVaccinYn(1);
-                       
+                        console.log(formattedDate)
                     }}>아니오</button>
                 </Grid>
             </Grid>
