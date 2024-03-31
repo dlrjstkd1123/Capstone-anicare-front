@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import '../css/Vaccin.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import axios from 'axios';
 
 function VaccinPage() {
    
@@ -31,7 +31,21 @@ function VaccinPage() {
         month: 'long',
         day: 'numeric',
     });
-
+    const VaccinPost = ()=>{
+        let vaccindata = {
+            vaccintype : vaccin,
+            vaccinyn : vaccinyn,
+            vaccindate : formattedDate
+        }
+        axios.post('/url', vaccindata)
+        .then(response => {
+            console.log('분석 요청이 서버로 전송되었습니다.');
+        })
+        .catch(error => {
+            console.error('분석 요청을 서버로 전송하는 중 오류가 발생했습니다:', error);
+        });
+};
+    
     useEffect(() => {
         const handleScroll = () => {
             const position = window.scrollY;
@@ -111,7 +125,9 @@ function VaccinPage() {
             </Grid>
             <p style={{fontWeight:"700"}}>과거 접종 날짜</p>
             <ReactDatePicker className="DatePicker"></ReactDatePicker>
-            <button className='VaccinButton'>분석하기</button>
+            <button className='VaccinButton' onClick={()=>{
+                VaccinPost();
+            }}>분석하기</button>
             
         </div>
     )
