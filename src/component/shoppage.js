@@ -7,7 +7,7 @@ import {
     Button
 
 } from '@mui/material';
-
+import maindata from '../maindata';
 function ShopPage() {
     const [isScrolled, setIsScrolled] = useState(false);
 

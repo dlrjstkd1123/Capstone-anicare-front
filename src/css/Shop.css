@@ -1,27 +1,71 @@
-.ShopTop{
-    
-}
-.ShopTop>p{
+.ShopTop {}
+
+.ShopTop>p {
     text-align: left;
     padding-left: 5%;
     font-size: 24px;
     font-weight: 700;
 }
-.ShopTop>input{
+
+.ShopTop>input {
     width: 90%;
     height: 50px;
     background-color: #D6EEFF;
     border-radius: 13px;
     border: none;
 }
+
 .ShopSection {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-.ShopButton{
+    margin-bottom: 100px;
+}
+
+.ShopButton {
     width: 33.3%;
     height: 45px;
+
+}
+
+.ShopDetailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
-  }
+}
+
+.ShopDetailTop {
+    width: 90%;
+    height: 180px;
+    border: 2px solid #D6EEFF;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-color: #D6EEFF;
+}
+.ShopDetailSection{
+    margin-top: 5%;
+    text-align: left;
+}
+
+.ShopDetailBottomBt{
+    background-color: #45A8F0;
+    width: 232px;
+    height: 51px;
+    margin-top: 60px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.ShopDetailButton{
+    width: 50%;
+    height: 30px;
+    
+}
+.css-19midj6:nth-child(3){
+ text-align: center!important;   
+}

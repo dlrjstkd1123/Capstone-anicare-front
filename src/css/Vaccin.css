@@ -3,7 +3,7 @@
 }
 
 .GridContainer button {
-    width: 95%;
+    width: 85%;
     height: 45px;
     padding: 0;
     border-radius: 20px;
@@ -13,9 +13,10 @@
 }
 
 .react-datepicker-ignore-onclickoutside {
-    background-color: #7dbfee;
+    background-color: #5bb6f6;
     color: white;
     cursor: pointer;
+    transition: all 0.3s;
 
 }
 
@@ -39,9 +40,36 @@
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 1px;
+    margin-bottom: 100px;
 }
 .VaccinSelected{
     background-color: #45A8F0!important;
     color: white;
     transition: all 0.5s;
 }
+.react-datepicker__triangle{
+    margin-bottom: 30px;
+}
+
+.react-datepicker__month-container{
+   
+    font-weight: 700;
+}
+.react-datepicker__header{
+    font-size: 20px;
+    
+}
+.react-datepicker__day-names{
+    font-size: 15px;
+    margin-top: 15px;
+}
+.react-datepicker__day-name{
+    padding: 5px;
+}
+.react-datepicker__week{
+    margin: 5px;
+}
+.react-datepicker__day{
+    padding: 5px;  
+    font-size: 15px;
+} 

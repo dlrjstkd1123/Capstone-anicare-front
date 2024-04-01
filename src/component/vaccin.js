@@ -76,7 +76,7 @@ function VaccinPage() {
                 </Link>
                 <div style={{ marginRight: "20px" }}>Logout</div>
             </div>
-            <h3 style={{ paddingTop: "110px", textAlign: "left", paddingLeft: "5%" }}>←</h3>
+            <Link to="/main"><h3 style={{ paddingTop: "110px", textAlign: "left", paddingLeft: "5%" }}>←</h3></Link>
             <Grid className='GridContainer' container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={6}>
                     <button className={vaccin === "파보바이러스감염증" ? "VaccinSelected" : ""} onClick={()=>{
