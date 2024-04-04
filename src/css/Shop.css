@@ -44,6 +44,11 @@
     border-radius: 20px;
     background-color: #D6EEFF;
 }
+.ShopDetailTop >img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
 .ShopDetailSection{
     margin-top: 5%;
     text-align: left;

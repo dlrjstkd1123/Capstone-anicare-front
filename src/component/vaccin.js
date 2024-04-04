@@ -12,7 +12,7 @@ function VaccinPage() {
     let [vaccin,SetVaccin] = useState(null);
     let [vaccinyn,SetVaccinYn] = useState(null);
     let [startDate, setStartDate] = useState(new Date());
-
+    
     const ReactDatePicker = () => {
         
         
@@ -31,12 +31,13 @@ function VaccinPage() {
         month: 'long',
         day: 'numeric',
     });
-    const VaccinPost = ()=>{
+    const VaccinPost = (vaccin, vaccinyn, formattedDate)=>{
         let vaccindata = {
             vaccintype : vaccin,
             vaccinyn : vaccinyn,
             vaccindate : formattedDate
         }
+        
         axios.post('/url', vaccindata)
         .then(response => {
             console.log('분석 요청이 서버로 전송되었습니다.');
@@ -126,7 +127,7 @@ function VaccinPage() {
             <p style={{fontWeight:"700"}}>과거 접종 날짜</p>
             <ReactDatePicker className="DatePicker"></ReactDatePicker>
             <button className='VaccinButton' onClick={()=>{
-                VaccinPost();
+                VaccinPost(vaccin,vaccinyn,startDate);
             }}>분석하기</button>
             
         </div>

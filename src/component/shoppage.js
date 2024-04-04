@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import '../css/Shop.css';
 import {
@@ -7,10 +7,26 @@ import {
     Button
 
 } from '@mui/material';
-import maindata from '../maindata';
-function ShopPage() {
-    const [isScrolled, setIsScrolled] = useState(false);
 
+function ShopPage(props) {
+    const [isScrolled, setIsScrolled] = useState(false);
+    let [filtershop,setFilterShop] = useState([]);
+    let [search,setSearch] = useState("");
+    
+    
+    useEffect(() => {
+        if (!filtershop) {
+            setFilterShop(props.shop);
+            return;
+        }
+
+        const filtered = props.shop.filter(item => {
+            return item.product.toLowerCase().includes(search.toLowerCase());
+            console.log(filtered)
+        });
+        setFilterShop(filtered);
+        
+    }, [search, props.shop]);
     useEffect(() => {
         const handleScroll = () => {
             const position = window.scrollY;
@@ -43,21 +59,36 @@ function ShopPage() {
             <div className='ShopContainer' style={{ paddingTop: "110px" }}>
                 <div className='ShopTop'>
                     <p>Search for a product</p>
-                    <input type="text" placeholder='Search...' />
+                    <input
+                        type="text"
+                        placeholder='Search...'
+                        onChange={(e)=>setSearch(e.target.value)} />
                     <ButtonGroup variant="contained" aria-label="Basic button group"
                         style={{ width: "70%", backgroundColor: "#45A8F0", marginTop: "20px" }}>
-                        <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }}className='ShopButton'>장난감</Button>
-                        <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }}className='ShopButton'>간식</Button>
-                        <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }}className='ShopButton'>편리용품</Button>
+                        <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopButton'>장난감</Button>
+                        <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopButton'>간식</Button>
+                        <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopButton'>편리용품</Button>
                     </ButtonGroup>
 
                 </div>
-                <div className='ShopSection'>
-                    <div className='box'></div>
-                    <div className='box'></div>
-                    <div className='box'></div>
-                    <div className='box'></div>
-                    <div className='box'></div>
+                <div className='ShopSection'style={{marginBottom:"100px"}}>
+                    {
+                        filtershop.map(function (a, i) {
+                            return (
+                                <div className='box' >
+
+                                    <Link to={`/shopdetail/${a.id}`}>
+                                    <img src={`../picture/shop${a.id}.JPG`} width="100%" height="70%" />
+                                    </Link>
+                                    <h4 style={{marginTop:"10px"}}>{a.product}</h4>
+
+
+                                </div>
+                            )
+                        })
+                    }
+
+
 
                 </div>
             </div>
