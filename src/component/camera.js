@@ -136,7 +136,7 @@ function Cammodal( ) {
                     
                     const formData = new FormData();
                     formData.append('image', files[0].file); // 파일 직접 업로드
-                    console.log(files[0].gifile)
+                    console.log(files[0].file)
                     axios.post('http://example.com/upload', formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
