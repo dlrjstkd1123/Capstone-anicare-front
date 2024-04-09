@@ -8,7 +8,8 @@ import ShopPage from './component/shoppage';
 import SignUp from './component/signup';
 import VaccinPage from './component/vaccin';
 import ShopDetail from './component/shopdetail';
-import shop from './shopdata';
+import shop from './shopdata'
+import Camera from './component/camera';
 function App() {
 
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path="/shop" element={<ShopPage shop={shop} />}></Route>
         <Route path="/shopdetail/:id" element={<ShopDetail shop={shop}/>}></Route>
         <Route path="/vaccin" element={<VaccinPage/>}></Route>
-        
+        <Route path="/camera" element={<Camera/>}></Route>
       </Routes>
     </div>
 
