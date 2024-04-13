@@ -18,6 +18,7 @@ import {
 
 
 function ShopDetail(props) {
+    const [mainlist, Setmainlist] = useState(["상점"]);
     let {id} = useParams();
     let detailproduct = props.shop.find(function(x){
         return x.id == id
@@ -54,36 +55,40 @@ function ShopDetail(props) {
     }
     const [isScrolled, setIsScrolled] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const position = window.scrollY;
-            // 특정 위치에 도달하면 isScrolled 값을 변경
-            if (position > 100) { // 특정 위치를 조정할 수 있습니다.
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    
     return (
         <div className="Mainpage">
             <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
-                <p>AniCare</p>
-            </div>
-            <div className='MainBottomNav'>
-                <Link to="/main" style={{ textDecoration: "none", color: "black" }}><div style={{ marginLeft: "20px" }}>
-                    <img src="/home.png" alt="" style={{ width: "20px", marginRight: "10px" }} />
-                    Home</div></Link>
-                <div style={{ marginRight: "20px" }}>Logout</div>
+                <div>
+
+                    <p className='Logoname'>에케플</p>
+
+                </div>
+                <div className="MainTopNavListBox">
+                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {
+                        let copy = [...mainlist];
+                        copy[0] = "상점";
+                        Setmainlist(copy)
+                    }}>상  점</p></Link>
+                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList${mainlist[0] === "게시판" ? "active" : ""}`} onClick={() => {
+                        let copy = [...mainlist];
+                        copy[0] = "게시판";
+                        Setmainlist(copy)
+                    }}>게시판</p></Link>
+                    <Link to="/camera" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList${mainlist[0] === "카메라" ? "active" : ""}`} onClick={() => {
+                        let copy = [...mainlist];
+                        copy[0] = "카메라";
+                        Setmainlist(copy)
+                    }}>카메라</p></Link>
+                    <Link to="/vaccin" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList${mainlist[0] === "접종" ? "active" : ""}`} onClick={() => {
+                        let copy = [...mainlist];
+                        copy[0] = "접종";
+                        Setmainlist(copy)
+                    }}>접종</p></Link>
+                </div>
             </div>
             {/* 여기서부터 shopdetail html */}
-            <Link to="/shop"><h3 style={{ paddingTop: "110px", textAlign: "left", paddingLeft: "5%" }}>←</h3></Link>
+            <Link to="/shop"><h3 style={{ paddingTop: "10px", textAlign: "left", paddingLeft: "5%" }}>←</h3></Link>
             <div className='ShopDetailContainer'>
                 <div className='ShopDetailTop'><img src={`../picture/shop${detailproduct.id}.JPG`} alt="" /></div>
                 <div className='ShopDetailSection'>

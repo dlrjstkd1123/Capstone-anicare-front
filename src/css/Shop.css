@@ -15,13 +15,16 @@
     border: none;
 }
 
-.ShopSection {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 100px;
+.shopbox {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #f2f2f2;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-color: white;
+    margin: 0 auto;
 }
+
 
 .ShopButton {
     width: 33.3%;
@@ -33,29 +36,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 .ShopDetailTop {
     width: 90%;
     height: 180px;
-    border: 2px solid #D6EEFF;
+    border: 2px solid #e84f13;
     margin-top: 30px;
     border-radius: 20px;
     background-color: #D6EEFF;
 }
-.ShopDetailTop >img{
+
+.ShopDetailTop>img {
     width: 100%;
     height: 100%;
     border-radius: 20px;
 }
-.ShopDetailSection{
+
+.ShopDetailSection {
     margin-top: 5%;
     text-align: left;
 }
 
-.ShopDetailBottomBt{
-    background-color: #45A8F0;
+.ShopDetailBottomBt {
+    background-color: #e84f13;
     width: 232px;
     height: 51px;
     margin-top: 60px;
@@ -66,11 +71,32 @@
     font-weight: 600;
     letter-spacing: 1px;
 }
-.ShopDetailButton{
+
+.ShopDetailButton {
     width: 50%;
     height: 30px;
-    
+
 }
-.css-19midj6:nth-child(3){
- text-align: center!important;   
+
+.css-19midj6:nth-child(3) {
+    text-align: center !important;
+}
+
+.ShopImage {
+    border-radius: 20px 20px 0 0;
+}
+
+.css-1d9bq45-MuiButtonGroup-root .MuiButtonGroup-lastButton,
+.css-1d9bq45-MuiButtonGroup-root .MuiButtonGroup-middleButton {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.css-1d9bq45-MuiButtonGroup-root .MuiButtonGroup-firstButton {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.css-1d9bq45-MuiButtonGroup-root {
+    border-radius: 13px !important;
 }

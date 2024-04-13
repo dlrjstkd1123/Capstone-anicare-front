@@ -3,17 +3,17 @@
 }
 
 .GridContainer button {
-    width: 85%;
-    height: 45px;
+    width: 70%;
+    height: 25px;
     padding: 0;
-    border-radius: 20px;
+    border-radius: 7px;
     background-color: white;
-    border: 2px solid #5bb6f6;
+    border: 2px solid #e84f13;
     font-weight: 900;
 }
 
 .react-datepicker-ignore-onclickoutside {
-    background-color: #5bb6f6;
+    background-color: #e84f13;
     color: white;
     cursor: pointer;
     transition: all 0.3s;
@@ -22,28 +22,28 @@
 
 .react-datepicker__input-container>input {
     text-align: center;
-    height: 38px;
-    border-radius: 20px;
-    border: 2px solid #5bb6f6;
+    height: 25px;
+    border-radius: 10px;
+    border: 2px solid #e84f13;
     font-weight: 600;
 
 }
 
 .VaccinButton {
-    background-color: #45A8F0;
+    background-color: #e84f13;
     width: 232px;
     height: 51px;
-    margin-top: 60px;
+    margin-top: 40px;
     border-radius: 10px;
     border: none;
     color: white;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 .VaccinSelected{
-    background-color: #45A8F0!important;
+    background-color: #e84f13!important;
     color: white;
     transition: all 0.5s;
 }
