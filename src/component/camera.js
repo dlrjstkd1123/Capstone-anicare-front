@@ -1,13 +1,16 @@
 import '../css/Camera.css';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
 import axios from 'axios';
 import * as LR from '@uploadcare/blocks';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera, faAngleLeft,faHouse } from "@fortawesome/free-solid-svg-icons";
 
 import React, { useEffect, useState, useRef } from 'react';
 LR.registerBlocks(LR);
 function Camera() {
+    const navigate = useNavigate();
     const [mainlist, Setmainlist] = useState(["카메라"]); // 상태를 배열로 초기화
     const [files, setFiles] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
@@ -71,35 +74,35 @@ function Camera() {
     }, [])
     return (
         <div className="Mainpage">
-           <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
+            <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
                 <div>
-                    
+
                     <p className='Logoname'>에케플</p>
-                   
+
                 </div>
                 <div className="MainTopNavListBox">
-                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList${mainlist[0]=== "상점"? "active":""}`} onClick={()=>{ 
+                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
                         copy[0] = "상점";
                         Setmainlist(copy)
                     }}>상  점</p></Link>
-                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList${mainlist[0]=== "게시판"? "active":""}`} onClick={()=>{ 
+                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "게시판" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
                         copy[0] = "게시판";
                         Setmainlist(copy)
                     }}>게시판</p></Link>
-                     <Link to="/camera" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList${mainlist[0]=== "카메라"? "active":""}`} onClick={()=>{ 
+                    <Link to="/camera" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "카메라" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
                         copy[0] = "카메라";
                         Setmainlist(copy)
                     }}>카메라</p></Link>
-                     <Link to="/vaccin" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList${mainlist[0]=== "접종"? "active":""}`} onClick={()=>{ 
+                    <Link to="/vaccin" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "접종" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
                         copy[0] = "접종";
                         Setmainlist(copy)
                     }}>접종</p></Link>
 
-                    
+
                 </div>
             </div>
 
@@ -174,21 +177,24 @@ function Camera() {
             </div>
 
             <div className='MainBottomNav'>
-                <Link to="/main" style={{ textDecoration: "none", color: "black" }}>
+                <Link to="/main" style={{ textDecoration: "none", color: "#9a9a9a" }}>
                     <div>
-                        <img src="/home.png" alt="" style={{ width: "20px" }} />
+                        <FontAwesomeIcon icon={faHouse} />
                     </div>
                 </Link>
-                <Link to="/main" style={{ textDecoration: "none", color: "black" }}>
+                <Link to="/camera" style={{ textDecoration: "none", color: "#9a9a9a" }}>
                     <div>
-                        <img src="/home.png" alt="" style={{ width: "20px" }} />
+                        <FontAwesomeIcon icon={faCamera} />
                     </div>
                 </Link>
-                <Link to="/main" style={{ textDecoration: "none", color: "black" }}>
-                    <div>
-                        <img src="/home.png" alt="" style={{ width: "20px" }} />
-                    </div>
-                </Link>
+
+                <div>
+                    <FontAwesomeIcon icon={faAngleLeft} onClick={() => {
+                        navigate(-1)
+                    }} />
+
+                </div>
+
             </div>
 
         </div>

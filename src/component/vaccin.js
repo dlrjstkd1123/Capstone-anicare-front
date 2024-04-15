@@ -1,13 +1,14 @@
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link,useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, } from 'react';
 import '../css/Vaccin.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera,faAngleLeft,faHouse } from "@fortawesome/free-solid-svg-icons";
 function VaccinPage() {
-
+    const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
     let [vaccin, SetVaccin] = useState(null);
     let [vaccinyn, SetVaccinYn] = useState(null);
@@ -47,22 +48,7 @@ function VaccinPage() {
             });
     };
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const position = window.scrollY;
-            if (position > 100) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    
     return (
         <div className="Vaccinpage">
             <div className="Mainpage">
@@ -73,22 +59,22 @@ function VaccinPage() {
 
                     </div>
                     <div className="MainTopNavListBox">
-                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList${mainlist[0]=== "상점"? "active":""}`} onClick={()=>{ 
+                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList ${mainlist[0]=== "상점"? "active":""}`} onClick={()=>{ 
                         let copy = [...mainlist];
                         copy[0] = "상점";
                         Setmainlist(copy)
                     }}>상  점</p></Link>
-                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList${mainlist[0]=== "게시판"? "active":""}`} onClick={()=>{ 
+                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList ${mainlist[0]=== "게시판"? "active":""}`} onClick={()=>{ 
                         let copy = [...mainlist];
                         copy[0] = "게시판";
                         Setmainlist(copy)
                     }}>게시판</p></Link>
-                     <Link to="/camera" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList${mainlist[0]=== "카메라"? "active":""}`} onClick={()=>{ 
+                     <Link to="/camera" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList ${mainlist[0]=== "카메라"? "active":""}`} onClick={()=>{ 
                         let copy = [...mainlist];
                         copy[0] = "카메라";
                         Setmainlist(copy)
                     }}>카메라</p></Link>
-                     <Link to="/vaccin" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList${mainlist[0]=== "접종"? "active":""}`} onClick={()=>{ 
+                     <Link to="/vaccin" style={{ color: "rgb(111, 111, 111)",textDecoration:"none" }}><p className={`MainTopNavList ${mainlist[0]=== "접종"? "active":""}`} onClick={()=>{ 
                         let copy = [...mainlist];
                         copy[0] = "접종";
                         Setmainlist(copy)
@@ -99,26 +85,29 @@ function VaccinPage() {
 
 
                 <div className='MainBottomNav'>
-                    <Link to="/main" style={{ textDecoration: "none", color: "black" }}>
+                    <Link to="/main" style={{ textDecoration: "none", color: "#9a9a9a" }}>
                         <div>
-                            <img src="/home.png" alt="" style={{ width: "20px" }} />
+                        <FontAwesomeIcon icon={faHouse} />
                         </div>
                     </Link>
-                    <Link to="/main" style={{ textDecoration: "none", color: "black" }}>
+                    <Link to="/camera" style={{ textDecoration: "none", color: "#9a9a9a" }}>
                         <div>
-                            <img src="/home.png" alt="" style={{ width: "20px" }} />
+                        <FontAwesomeIcon icon={faCamera} />
                         </div>
                     </Link>
-                    <Link to="/main" style={{ textDecoration: "none" }}>
+                    
                         <div>
-                            <img src="/home.png" alt="" style={{ width: "20px" }} />
+                        <FontAwesomeIcon icon={faAngleLeft} onClick={()=>{
+                                navigate(-1)
+                            }} />
+                            
                         </div>
-                    </Link>
+                    
                 </div>
 
             </div>
             <div className='MainTopLogoBox'>
-                <div className='MainSectionTopBox' style={{ marginTop: "0px" }}>
+                <div className='MainSectionTopBox' style={{ marginBottom: "20px" }}>
 
 
                     <h5 style={{ marginTop: "30px", marginBottom: "10px", color: "grey" }}>자신의 반려견 또는 유기견을 찍어보세요!</h5>
@@ -129,32 +118,32 @@ function VaccinPage() {
             
             <Grid className='GridContainer' container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={6}>
-                    <button className={vaccin === "파보바이러스감염증" ? "VaccinSelected" : ""} onClick={() => {
+                    <button className={`vaccinselect ${vaccin === "파보바이러스감염증" ? "VaccinSelected" : ""}`} onClick={() => {
                         SetVaccin("파보바이러스감염증")
                     }} >파보바이러스감염증</button>
                 </Grid>
                 <Grid item xs={6}>
-                    <button className={vaccin === "파라인플루엔자" ? "VaccinSelected" : ""} onClick={() => {
+                    <button className={`vaccinselect ${vaccin === "파라인플루엔자" ? "VaccinSelected" : ""}`} onClick={() => {
                         SetVaccin("파라인플루엔자")
                     }}>파라인플루엔자</button>
                 </Grid>
                 <Grid item xs={6}>
-                    <button className={vaccin === "디스템퍼" ? "VaccinSelected" : ""} onClick={() => {
+                    <button className={`vaccinselect ${vaccin === "디스템퍼" ? "VaccinSelected" : ""}`} onClick={() => {
                         SetVaccin("디스템퍼")
                     }}>디스템퍼</button>
                 </Grid>
                 <Grid item xs={6}>
-                    <button className={vaccin === "코로나바이러스" ? "VaccinSelected" : ""} onClick={() => {
+                    <button className={`vaccinselect ${vaccin === "코로나바이러스" ? "VaccinSelected" : ""}`} onClick={() => {
                         SetVaccin("코로나바이러스")
                     }}>코로나바이러스</button>
                 </Grid>
                 <Grid item xs={6}>
-                    <button className={vaccin === "호흡기감염" ? "VaccinSelected" : ""} onClick={() => {
+                    <button className={`vaccinselect ${vaccin === "호흡기감염" ? "VaccinSelected" : ""}`} onClick={() => {
                         SetVaccin("호흡기감염")
                     }}>호흡기감염</button>
                 </Grid>
                 <Grid item xs={6}>
-                    <button className={vaccin === "광견병" ? "VaccinSelected" : ""} onClick={() => {
+                    <button className={`vaccinselect ${vaccin === "광견병" ? "VaccinSelected" : ""}`} onClick={() => {
                         SetVaccin("광견병")
                     }}>광견병</button>
                 </Grid>
@@ -162,12 +151,12 @@ function VaccinPage() {
             <p style={{ fontWeight: "700" }}>과거 접종 여부</p>
             <Grid className='GridContainer' container rowSpacing={3.5} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={6}>
-                    <button className={vaccinyn === 0 ? "VaccinSelected" : ""} onClick={() => {
+                    <button className={`vaccinselect ${vaccinyn === 0 ? "VaccinSelected" : ""}`} onClick={() => {
                         SetVaccinYn(0)
                     }} >예</button>
                 </Grid>
                 <Grid item xs={6}>
-                    <button className={vaccinyn === 1 ? "VaccinSelected" : ""} onClick={() => {
+                    <button className={`vaccinselect ${vaccinyn === 1 ? "VaccinSelected" : ""}`} onClick={() => {
                         SetVaccinYn(1);
                         console.log(formattedDate)
                     }}>아니오</button>

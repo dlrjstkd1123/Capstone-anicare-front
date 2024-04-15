@@ -1,7 +1,9 @@
-
-import React, { useEffect, useState, useRef } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera,faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect, useState, useRef, } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 function Main() {
+    
     let [mainlist,Setmainlist] = useState("")
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const totalImages = 3;

@@ -1,5 +1,6 @@
 .GridContainer {
     padding: 3%;
+    margin-top: 35px;
 }
 
 .GridContainer button {
@@ -40,7 +41,10 @@
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-bottom: 80px;
+    margin-bottom: 90px;
+}
+.vaccinselect{
+    font-size: 10px;
 }
 .VaccinSelected{
     background-color: #e84f13!important;

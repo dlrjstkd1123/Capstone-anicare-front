@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes,useNavigate } from 'react-router-dom';
 import MainPage from './component/mainpagecomponent';
 import React, { useEffect, useState } from 'react';
 import Login from './component/logincomponent';
@@ -10,6 +10,7 @@ import VaccinPage from './component/vaccin';
 import ShopDetail from './component/shopdetail';
 import shop from './shopdata'
 import Camera from './component/camera';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function App() {
 
   return (
