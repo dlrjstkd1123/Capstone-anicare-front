@@ -6,7 +6,7 @@ function SignUp() {
         <div className="SignUp">
             <div className="SignUpmainbg"></div>
             <div className="SignUpTop">
-                <p><span>Sign</span> <span style={{ color: "#0D99FF" }}>Up</span></p>
+                <p><span>Sign</span> <span style={{ color: "#e84f13" }}>Up</span></p>
                 <p>Create a new account to join
                     our site!</p>
             </div>
@@ -19,7 +19,7 @@ function SignUp() {
             </form>
             <div className="SignUpBottom">
                 <p ><input type="checkbox" /> <span>I agree to terms and conditions</span>
-                    <Link to="/login" style={{ color: "#219ef8" }}> <span style={{ fontWeight: "600", textDecoration: "underline" }}>Login</span></Link></p>
+                    <Link to="/login" style={{ color: "#e84f13" }}> <span style={{ fontWeight: "600", textDecoration: "underline" }}>Login</span></Link></p>
             </div>
 
         </div>
