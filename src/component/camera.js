@@ -91,11 +91,11 @@ function Camera() {
                         copy[0] = "게시판";
                         Setmainlist(copy)
                     }}>게시판</p></Link>
-                    <Link to="/camera" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "카메라" ? "active" : ""}`} onClick={() => {
+                    <Link to="/camera" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "지도" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
-                        copy[0] = "카메라";
+                        copy[0] = "지도";
                         Setmainlist(copy)
-                    }}>카메라</p></Link>
+                    }}>지도</p></Link>
                     <Link to="/vaccin" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "접종" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
                         copy[0] = "접종";
