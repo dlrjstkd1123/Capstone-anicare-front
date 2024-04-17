@@ -41,15 +41,8 @@ function VaccinPage() {
    
 
 
-    const formattedDateObject = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-    formattedDateObject.setDate(formattedDateObject.getDate() + selectedVaccinData.date);
-    // console.log(formattedDateObject)
-    const formattedDateString = formattedDateObject.toLocaleDateString('ko-KR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-
+    const formattedDateObject = selectedVaccinData ? new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + selectedVaccinData.date) : null;
+    const formattedDateString = formattedDateObject ? formattedDateObject.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
 
     const VaccinPost = (vaccin, vaccinyn, formattedDate, selectedVaccinData) => {
 
@@ -185,7 +178,7 @@ function VaccinPage() {
             <div className={`vaccinMod ${vaccinmod == true ? "active" : null}`}>
                 <div className="vaccinModContentBox">
 
-                    {selectedVaccinData && (
+                    {selectedVaccinData &&  (
 
                         <div className={`vaccinModSection`}>
                             <div style={{ fontSize: "20px", margin: "5%" }}>{selectedVaccinData.name}</div>
