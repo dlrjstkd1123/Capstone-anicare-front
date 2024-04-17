@@ -48,12 +48,12 @@ function ShopPage(props) {
                         copy[0] = "상점";
                         Setmainlist(copy)
                     }}>상  점</p></Link>
-                    <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "게시판" ? "active" : ""}`} onClick={() => {
+                    <Link to="/board" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "게시판" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
                         copy[0] = "게시판";
                         Setmainlist(copy)
                     }}>게시판</p></Link>
-                    <Link to="/camera" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "지도" ? "active" : ""}`} onClick={() => {
+                    <Link to="/map" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "지도" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
                         copy[0] = "지도";
                         Setmainlist(copy)

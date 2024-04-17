@@ -10,6 +10,9 @@ import VaccinPage from './component/vaccin';
 import ShopDetail from './component/shopdetail';
 import shop from './shopdata'
 import Camera from './component/camera';
+import Board from './component/board';
+import Map from './component/map';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function App() {
 
@@ -25,6 +28,8 @@ function App() {
         <Route path="/shopdetail/:id" element={<ShopDetail shop={shop}/>}></Route>
         <Route path="/vaccin" element={<VaccinPage/>}></Route>
         <Route path="/camera" element={<Camera/>}></Route>
+        <Route path="/board" element={<Board></Board> }></Route>
+        <Route path="/map" element={<Map/>} ></Route>
       </Routes>
     </div>
 

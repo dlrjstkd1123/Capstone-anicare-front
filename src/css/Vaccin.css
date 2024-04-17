@@ -1,6 +1,7 @@
 .GridContainer {
     padding: 3%;
     margin-top: 35px;
+    
 }
 
 .GridContainer button {
@@ -11,8 +12,26 @@
     background-color: white;
     border: 2px solid #e84f13;
     font-weight: 900;
+    font-size: 12px;
 }
-
+.GridContainernum{
+    padding: 3%;
+    margin-top: 3px;
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    
+}
+.GridContainernum button{
+    width: 70%;
+    height: 25px;
+    padding: 0;
+    
+    border-radius: 7px;
+    background-color: white;
+    border: 2px solid #e84f13;
+    font-weight: 900;
+    font-size: 12px;
+}
 .react-datepicker-ignore-onclickoutside {
     background-color: #e84f13;
     color: white;
@@ -77,3 +96,43 @@
     padding: 5px;  
     font-size: 15px;
 } 
+.vaccinMod{
+    opacity: 0;
+    height: 0;
+    width: 50%;
+    transition: all 0.3s;
+    position: fixed;
+    top: -400px;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.vaccinMod.active{
+    opacity: 1;
+    height: 600px;
+    width: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 30px;
+    border: 2px solid #e84f13;
+    
+}
+.vaccinModButton{
+    width: 30%;
+    height: 30px;
+    padding: 0;
+    border-radius: 7px;
+    background-color: #e84f13;
+    border: none;
+    color: white;
+    font-weight: 900;
+    font-size: 12px;
+    position: fixed;
+    left: 50%;
+    bottom: 3%;
+    transform: translate(-50%, -50%);
+    
+}

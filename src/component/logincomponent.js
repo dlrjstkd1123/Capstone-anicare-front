@@ -7,14 +7,16 @@ import axios from 'axios';
 
 function Login() {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [userId, setUserId] = useState('');
+    const [username, setUserId] = useState('');
     const [password, setPassword] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault();
     
         try {
           // 로그인 요청 보내기
-          const response = await axios.post('/login', { userId, password });
+          const response = await axios.post('https://localhost:8080/api/user/login', 
+          { username : username, 
+            password : password });
     
           // 응답에서 데이터 가져오기
           const loginResult = response.data;
@@ -43,7 +45,7 @@ function Login() {
                 <p>Welcome out site!!</p>
             </div>
             <form className="LoginInputContainer" style={{ textAlign: "center" }} onSubmit={handleSubmit}>
-                <input type="text" placeholder="UserID" value={userId} onChange={(e) => setUserId(e.target.value)} />
+                <input type="text" placeholder="UserID" value={username} onChange={(e) => setUserId(e.target.value)} />
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit">Continue</button>
             </form>
