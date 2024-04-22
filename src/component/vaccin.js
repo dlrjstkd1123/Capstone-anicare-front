@@ -53,7 +53,7 @@ function VaccinPage() {
 
 
     return (
-        <div className="Vaccinpage">
+        <div className="Vaccinpage" >
             <div className="Mainpage">
                 <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
                     <div>
@@ -110,7 +110,7 @@ function VaccinPage() {
                 </div>
 
             </div>
-            <div className='MainTopLogoBox'>
+            <div className='MainTopLogoBox' >
                 <div className='MainSectionTopBox' style={{ marginBottom: "20px" }}>
 
 
@@ -181,11 +181,12 @@ function VaccinPage() {
                     {selectedVaccinData &&  (
 
                         <div className={`vaccinModSection`}>
-                            <div style={{ fontSize: "20px", margin: "5%" }}>{selectedVaccinData.name}</div>
+                            <div className = "vaccinModTop"style={{textAlign:"left"}}>접종</div>
+                            <div className = "vaccinModTitle"style={{ fontSize: "20px", marginLeft: "9%" }}>{selectedVaccinData.name}</div>
                             <div style={{ fontSize: "13px", margin: "10%" }}>{selectedVaccinData.content}</div>
                             <div style={{ fontSize: "13px", margin: "10%" }} dangerouslySetInnerHTML={{ __html: selectedVaccinData.vaccindatacontent }}></div>
                             <div style={{ fontSize: "13px", margin: "10%" }}>접종횟수: {selectedVaccinData.num} 회</div>
-                            <div style={{ fontSize: "13px", margin: "10%" }}>다음 접종 일자: {formattedDateString} </div>
+                            <div style={{ fontSize: "13px", margin: "10%" }}>다음 예상 접종 일자: {formattedDateString} </div>
                         </div>
                     )}
                 </div>

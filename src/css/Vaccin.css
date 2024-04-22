@@ -1,7 +1,7 @@
 .GridContainer {
     padding: 3%;
     margin-top: 35px;
-    
+
 }
 
 .GridContainer button {
@@ -14,24 +14,28 @@
     font-weight: 900;
     font-size: 12px;
 }
-.GridContainernum{
+
+.GridContainernum {
     padding: 3%;
     margin-top: 3px;
     display: flex;
-    justify-content: center; /* 수평 가운데 정렬 */
-    
+    justify-content: center;
+    /* 수평 가운데 정렬 */
+
 }
-.GridContainernum button{
+
+.GridContainernum button {
     width: 70%;
     height: 25px;
     padding: 0;
-    
+
     border-radius: 7px;
     background-color: white;
     border: 2px solid #e84f13;
     font-weight: 900;
     font-size: 12px;
 }
+
 .react-datepicker-ignore-onclickoutside {
     background-color: #e84f13;
     color: white;
@@ -62,54 +66,64 @@
     letter-spacing: 1px;
     margin-bottom: 90px;
 }
-.vaccinselect{
+
+.vaccinselect {
     font-size: 10px;
 }
-.VaccinSelected{
-    background-color: #e84f13!important;
+
+.VaccinSelected {
+    background-color: #e84f13 !important;
     color: white;
     transition: all 0.5s;
 }
-.react-datepicker__triangle{
+
+.react-datepicker__triangle {
     margin-bottom: 30px;
 }
 
-.react-datepicker__month-container{
-   
+.react-datepicker__month-container {
+
     font-weight: 700;
 }
-.react-datepicker__header{
+
+.react-datepicker__header {
     font-size: 20px;
-    
+
 }
-.react-datepicker__day-names{
+
+.react-datepicker__day-names {
     font-size: 15px;
     margin-top: 15px;
 }
-.react-datepicker__day-name{
+
+.react-datepicker__day-name {
     padding: 5px;
 }
-.react-datepicker__week{
+
+.react-datepicker__week {
     margin: 5px;
 }
-.react-datepicker__day{
-    padding: 5px;  
+
+.react-datepicker__day {
+    padding: 5px;
     font-size: 15px;
-} 
-.vaccinMod{
+}
+
+.vaccinMod {
     opacity: 0;
     height: 0;
     width: 50%;
     transition: all 0.3s;
+    /* transition: opacity 0.5s; */
     position: fixed;
     top: -400px;
     left: 50%;
     transform: translate(-50%, -50%)
 }
 
-.vaccinMod.active{
+.vaccinMod.active {
     opacity: 1;
-    height: 600px;
+    height: 620px;
     width: 80%;
     position: fixed;
     top: 50%;
@@ -118,9 +132,10 @@
     background-color: white;
     border-radius: 30px;
     border: 2px solid #e84f13;
-    
+
 }
-.vaccinModButton{
+
+.vaccinModButton {
     width: 30%;
     height: 30px;
     padding: 0;
@@ -134,5 +149,33 @@
     left: 50%;
     bottom: 3%;
     transform: translate(-50%, -50%);
+    margin-top: 20px;
+
+}
+@font-face {
+    font-family: 'BagelFatOne-Regular';
+    src: url('/src/font/BagelFatOne-Regular.ttf') format('woff2');
+    font-weight: 500;
+    font-style: normal;
     
+  }
+
+.vaccinModTop {
+    margin-left: 10%;
+    margin-top: 5%;
+    font-family: 'BagelFatOne-Regular'!important;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 25px;
+    color: #e84f13;
+}
+.vaccinModTitle{
+    background-color: #e84f13;
+    color: white;
+    width: 40%;
+    border-radius: 8px;
+    margin: 5%;
+    font-size: 17px!important;
+    padding: 5px;
 }

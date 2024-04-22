@@ -67,13 +67,14 @@ function ShopPage(props) {
 
                 </div>
             </div>
-            <Box
+            <Box 
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '90%' },
                 }}
                 noValidate
                 autoComplete="off"
+                zIndex={-1}
             >
                 <div>
                     <TextField
@@ -81,6 +82,8 @@ function ShopPage(props) {
                         label="Search"
                         multiline
                         maxRows={4}
+                        zIndex={-1}
+                        style={{marginTop:"180px",marginBottom:"-150px"}}
                         onChange={(e) => setSearch(e.target.value)}
                     />
 
@@ -143,10 +146,10 @@ function ShopPage(props) {
                                             <div className='shopbox' style={{ marginTop: "5px" }}>
 
                                                 <Link to={`/shopdetail/${a.id}`}>
-                                                    <img src={`../picture/shop${a.id}.JPG`} width="100%" height="70%" className='ShopImage' />
+                                                    <img src={`../picture/shop${a.id}.JPG`} width="100%" height="60%" className='ShopImage' />
                                                 </Link>
 
-                                                <h6 style={{ marginTop: "10px" }}>{a.product}</h6>
+                                                <h6 style={{ marginTop: "13px",fontSize:"13px" }}>{a.product}</h6>
 
 
                                             </div>

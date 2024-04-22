@@ -107,7 +107,7 @@ function Camera() {
             </div>
 
             <div className={`CameraContainer ${cammodal ? 'active' : ''}`}>
-                <div className="CameraLogo" >
+                <div className="CameraLogo" style={{marginTop:"230px"}} >
                     <img src="../picture/camera.png" />
                 </div>
                 <div className="PhotoUpload">
@@ -166,9 +166,34 @@ function Camera() {
                                 }
 
                             }}>종 분석하기</button>
-                            <button className="CameraButton">
-                                질병 분석하기
-                            </button>
+                            <button className="CameraButton" onClick={() => {
+                                if (files.length === 0) {
+                                    alert("사진을 선택하세요")
+                                }
+                                else {
+
+                                    const formData = new FormData();
+                                    formData.append('image', files[0].file); // 파일 직접 업로드
+
+                                    for (const pair of formData.entries()) {
+                                        console.log(pair[0], pair[1]);
+                                    }
+                                    // axios.post('http://example.com/upload', formData, {
+                                    //     headers: {
+                                    //         'Content-Type': 'multipart/form-data'
+                                    //     }
+                                    // }).then(response => {
+                                    //     // 파일 업로드 성공 시 실행되는 코드
+                                    //     console.log('File uploaded successfully:', response.data);
+                                    //     alert("파일이 성공적으로 업로드되었습니다.");
+                                    // }).catch(error => {
+                                    //     // 파일 업로드 실패 시 실행되는 코드
+                                    //     console.error('Error uploading file:', error);
+                                    //     alert("파일 업로드 중 오류가 발생했습니다.");
+                                    // });
+                                }
+
+                            }}>질병 분석하기</button>
                         </div>
                     </div>
                 </div>

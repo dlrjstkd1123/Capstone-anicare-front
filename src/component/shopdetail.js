@@ -44,11 +44,12 @@ function ShopDetail(props) {
                 <Divider />
                 <Box sx={{ p: 2 }}>
                     <Typography gutterBottom variant="body2">
-                        <ButtonGroup variant="contained" aria-label="Basic button group"
+                        {/* <ButtonGroup variant="contained" aria-label="Basic button group"
                             style={{ width: "60%", backgroundColor: "#45A8F0" }}>
                             <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopDetailButton'>-</Button>
                             <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopDetailButton'>+</Button>
-                        </ButtonGroup>
+                        </ButtonGroup> */}
+                        <button className='ShopDetailBottomBt' style={{marginTop:"0px"}}>구매하러 가기</button>
                     </Typography>
 
                 </Box>
@@ -112,14 +113,14 @@ function ShopDetail(props) {
 
             </div>
             {/* 여기서부터 shopdetail html */}
-            <Link to="/shop"><h3 style={{ paddingTop: "10px", textAlign: "left", paddingLeft: "5%" }}>←</h3></Link>
-            <div className='ShopDetailContainer'>
-                <div className='ShopDetailTop'><img src={`../picture/shop${detailproduct.id}.JPG`} alt="" /></div>
-                <div className='ShopDetailSection'>
-                    <IntroDivider className="IntroDivider"></IntroDivider>
+            
+            <div className='ShopDetailContainer' >
+                <div className='ShopDetailTop'style={{marginTop:"200px"}}><img src={`../picture/shop${detailproduct.id}.JPG`} alt="" /></div>
+                <div className='ShopDetailSection' style={{marginTop:"90px"}}>
+                    <IntroDivider className="IntroDivider"  ></IntroDivider>
                 </div>
 
-                <button className='ShopDetailBottomBt'>Continue</button>
+                {/* <button className='ShopDetailBottomBt'>Continue</button> */}
 
             </div>
         </div>

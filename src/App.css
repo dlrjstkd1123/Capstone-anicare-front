@@ -10,7 +10,7 @@
 @font-face {
   font-family: 'BagelFatOne-Regular';
   src: url('/src/font/BagelFatOne-Regular.ttf') format('woff2');
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   
 }
@@ -23,7 +23,10 @@
   font-size: 27px;
   font-weight: 700;
   width: 100%;
-  
+  position: fixed;
+  background-color: white;
+  border-bottom: 1px solid silver;
+  z-index: 3;
 }
 .Logoname{
   font-family: 'BagelFatOne-Regular'!important;
@@ -96,7 +99,8 @@
 
 
 .mainSectionImg {
-  width: 30%;
+  width: 120px;
+  height: 120px;
   margin-top: 6%;
   border-radius: 20px;
   border: 1px solid rgb(209, 204, 204);
@@ -120,7 +124,7 @@
 }
 .MainSectionTopBox{
   width: 95%;
-  margin-top: 30px!important;
+  margin-top: 180px!important;
   text-align: left;
   border-radius: 10px;
   background-color: #ffffe2;
