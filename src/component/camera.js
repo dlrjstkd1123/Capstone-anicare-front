@@ -178,7 +178,7 @@ function Camera() {
                                     for (const pair of formData.entries()) {
                                         console.log(pair[0], pair[1]);
                                     }
-                                    // axios.post('http://example.com/upload', formData, {
+                                    // axios.post('http://3.38.225.120:8080//upload', formData, {
                                     //     headers: {
                                     //         'Content-Type': 'multipart/form-data'
                                     //     }

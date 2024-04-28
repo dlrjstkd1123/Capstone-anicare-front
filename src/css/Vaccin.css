@@ -111,12 +111,12 @@
 
 .vaccinMod {
     opacity: 0;
-    height: 0;
-    width: 50%;
-    transition: all 0.3s;
-    /* transition: opacity 0.5s; */
+    height: 620px;
+    width: 80%;
+    z-index: -5;
+    transition: all 0.15s ease;
     position: fixed;
-    top: -400px;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%)
 }
@@ -126,6 +126,7 @@
     height: 620px;
     width: 80%;
     position: fixed;
+    z-index: 3;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
