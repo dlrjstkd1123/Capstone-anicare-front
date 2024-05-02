@@ -1,35 +1,57 @@
-import { BrowserRouter, Route, Routes, Link ,useNavigate} from 'react-router-dom';
-import { useParams } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import '../css/Shop.css';
+import { Card, List, ListItem, ListItemButton, ListItemText, Typography, Divider, Box, Fab, BottomNavigation, BottomNavigationAction, Tab, Tabs } from '@mui/material';
+import { Add as AddIcon, Folder as FolderIcon, Restore as RestoreIcon, Favorite as FavoriteIcon, LocationOn as LocationOnIcon } from '@mui/icons-material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faCamera, faAngleLeft } from '@fortawesome/free-solid-svg-icons'; // 이 부분을 추가
 
-import TextField from '@mui/material/TextField';
-import {
-    ButtonGroup,
-    Button
-
-} from '@mui/material';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera,faAngleLeft ,faHouse} from "@fortawesome/free-solid-svg-icons";
 function Board(props) {
     const navigate = useNavigate();
-    const [isScrolled, setIsScrolled] = useState(false);
-    let [filtershop, setFilterShop] = useState([]);
-    let [search, setSearch] = useState("");
-    const [mainlist, Setmainlist] = useState(["게시판"]); // 상태를 배열로 초기화
+    const [tabValue, setTabValue] = useState(0);
+    const [mainlist, Setmainlist] = useState([]); // mainlist와 Setmainlist를 추가하거나 가져옵니다.
 
-    
+    const handleWriteClick = () => {
+        navigate('/write');
+    };
+
+    const handleItemClick = (id) => {
+        navigate(`/posts/${id}`);
+    };
+
+    const handleTabChange = (event, newValue) => {
+        setTabValue(newValue);
+    };
+
+    const data = [
+        {
+            id: 1,
+            src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
+            title: 'Night view',
+            description: '4.21M views',
+            likes: '2.3K likes',
+        },
+        {
+            id: 2,
+            src: 'https://images.unsplash.com/photo-1527549993586-dff825b37782',
+            title: 'Lake view',
+            description: '4.74M views',
+            likes: '3.1K likes',
+        },
+        {
+            id: 3,
+            src: 'https://images.unsplash.com/photo-1532614338840-ab30cf10ed36',
+            title: 'Mountain view',
+            description: '3.98M views',
+            likes: '1.9K likes',
+        },
+    ];
 
     return (
-        <div className="Mainpage">
-            <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
-                <div>
-
-                    <p className='Logoname'>에케플</p>
-
-                </div>
+        <Box sx={{ position: 'relative', width: '100%' }}>
+            <div className="MainpageDiv">
+                {/* MainpageDiv의 내용 */}
+                <p className='Logoname'>에케플</p>
                 <div className="MainTopNavListBox">
                     <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
@@ -51,34 +73,62 @@ function Board(props) {
                         copy[0] = "접종";
                         Setmainlist(copy)
                     }}>접종</p></Link>
-
-
                 </div>
-            
-            <div className='MainBottomNav'>
-                    <Link to="/main" style={{ textDecoration: "none", color: "#9a9a9a" }}>
-                        <div>
-                        <FontAwesomeIcon icon={faHouse} />
-                        </div>
-                    </Link>
-                    <Link to="/camera" style={{ textDecoration: "none", color: "#9a9a9a" }}>
-                        <div>
-                        <FontAwesomeIcon icon={faCamera} />
-                        </div>
-                    </Link>
-                    
-                        <div>
-                        <FontAwesomeIcon icon={faAngleLeft} onClick={()=>{
-                                navigate(-1)
-                            }} />
-                            
-                        </div>
-                    
-                </div>
-           
             </div>
-        </div>
+            <Tabs value={tabValue} onChange={handleTabChange} centered>
+                <Tab label="All" />
+                <Tab label="Popular" />
+                <Tab label="Recent" />
+                <Tab label="Favorites" />
+            </Tabs>
+            <Card variant="outlined" sx={{ margin: 'auto', mt: 2, mb: 2, maxWidth: 500 }}>
+                <List sx={{ py: 'var(--ListDivider-gap)' }}>
+                    {data.map((item, index) => (
+                        <React.Fragment key={item.title}>
+                            <ListItem>
+                                <ListItemButton sx={{ gap: 2 }} onClick={() => handleItemClick(item.id)}>
+                                    {/* MainBottomNav의 내용 */}
+                                    <Link to="/main" style={{ textDecoration: "none", color: "#9a9a9a" }}>
+                                        <div>
+                                            <FontAwesomeIcon icon={faHouse} />
+                                        </div>
+                                    </Link>
+                                    <Link to="/camera" style={{ textDecoration: "none", color: "#9a9a9a" }}>
+                                        <div>
+                                            <FontAwesomeIcon icon={faCamera} />
+                                        </div>
+                                    </Link>
+                                    <div>
+                                        <FontAwesomeIcon icon={faAngleLeft} onClick={() => {
+                                            navigate(-1)
+                                        }} />
+                                    </div>
+                                    <ListItemText>
+                                        <Typography fontWeight="md">{item.title}</Typography>
+                                        <Typography level="body-sm">{item.description}</Typography>
+                                        <Typography level="body2" color="text.secondary">{item.likes}</Typography>
+                                    </ListItemText>
+                                </ListItemButton>
+                            </ListItem>
+                            {index !== data.length - 1 && <Divider />}
+                        </React.Fragment>
+                    ))}
+                </List>
+            </Card>
+            <Fab color="primary" aria-label="add" sx={{ position: 'fixed', bottom: 70, right: 16 }} onClick={handleWriteClick}>
+                <AddIcon />
+            </Fab>
+            <div className="MainBottomNav">
+                {/* MainBottomNav의 내용 */}
+                <BottomNavigation sx={{ width: '100%', position: 'fixed', bottom: 0 }}>
+                    <BottomNavigationAction label="Main" value="main" icon={<FontAwesomeIcon icon={faHouse} />} component={Link} to="/main" />
+                    <BottomNavigationAction label="Camera" value="camera" icon={<FontAwesomeIcon icon={faCamera} />} component={Link} to="/camera" />
+                    {/* You can add more BottomNavigationAction as needed */}
+                    <BottomNavigationAction label="Back" value="back" icon={<FontAwesomeIcon icon={faAngleLeft} />} onClick={() => navigate(-1)} />
+                </BottomNavigation>
+            </div>
+        </Box>
+    );
+}
 
-    )
-};
 export default Board;

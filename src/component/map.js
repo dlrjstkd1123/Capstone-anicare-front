@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes, Link ,useNavigate} from 'react-router-dom
 import { useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import '../css/Shop.css';
+import Kakao from './kakao'
 
 import TextField from '@mui/material/TextField';
 import {
@@ -28,6 +29,9 @@ function Map(props) {
 
                     <p className='Logoname'>에케플</p>
 
+                </div>
+                <div>
+                <Kakao />
                 </div>
                 <div className="MainTopNavListBox">
                     <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {

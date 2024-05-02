@@ -12,6 +12,7 @@ import shop from './shopdata'
 import Camera from './component/camera';
 import Board from './component/board';
 import Map from './component/map';
+import Kakao from './component/kakao';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function App() {
