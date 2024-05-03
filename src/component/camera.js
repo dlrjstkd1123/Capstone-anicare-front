@@ -150,19 +150,19 @@ function Camera() {
                                     for (const pair of formData.entries()) {
                                         console.log(pair[0], pair[1]);
                                     }
-                                    // axios.post('http://example.com/upload', formData, {
-                                    //     headers: {
-                                    //         'Content-Type': 'multipart/form-data'
-                                    //     }
-                                    // }).then(response => {
-                                    //     // 파일 업로드 성공 시 실행되는 코드
-                                    //     console.log('File uploaded successfully:', response.data);
-                                    //     alert("파일이 성공적으로 업로드되었습니다.");
-                                    // }).catch(error => {
-                                    //     // 파일 업로드 실패 시 실행되는 코드
-                                    //     console.error('Error uploading file:', error);
-                                    //     alert("파일 업로드 중 오류가 발생했습니다.");
-                                    // });
+                                    axios.post('http://localhost:8080/api/images', formData, {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        }
+                                    }).then(response => {
+                                        // 파일 업로드 성공 시 실행되는 코드
+                                        console.log('File uploaded successfully:', response.data);
+                                        alert("파일이 성공적으로 업로드되었습니다.");
+                                    }).catch(error => {
+                                        // 파일 업로드 실패 시 실행되는 코드
+                                        console.error('Error uploading file:', error);
+                                        alert("파일 업로드 중 오류가 발생했습니다.");
+                                    });
                                 }
 
                             }}>종 분석하기</button>
@@ -178,19 +178,19 @@ function Camera() {
                                     for (const pair of formData.entries()) {
                                         console.log(pair[0], pair[1]);
                                     }
-                                    // axios.post('http://3.38.225.120:8080//upload', formData, {
-                                    //     headers: {
-                                    //         'Content-Type': 'multipart/form-data'
-                                    //     }
-                                    // }).then(response => {
-                                    //     // 파일 업로드 성공 시 실행되는 코드
-                                    //     console.log('File uploaded successfully:', response.data);
-                                    //     alert("파일이 성공적으로 업로드되었습니다.");
-                                    // }).catch(error => {
-                                    //     // 파일 업로드 실패 시 실행되는 코드
-                                    //     console.error('Error uploading file:', error);
-                                    //     alert("파일 업로드 중 오류가 발생했습니다.");
-                                    // });
+                                    axios.post('http://localhost:8080/api/images', formData, {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data'
+                                        }
+                                    }).then(response => {
+                                        // 파일 업로드 성공 시 실행되는 코드
+                                        console.log('File uploaded successfully:', response.data);
+                                        alert("파일이 성공적으로 업로드되었습니다.");
+                                    }).catch(error => {
+                                        // 파일 업로드 실패 시 실행되는 코드
+                                        console.error('Error uploading file:', error);
+                                        alert("파일 업로드 중 오류가 발생했습니다.");
+                                    });
                                 }
 
                             }}>질병 분석하기</button>
