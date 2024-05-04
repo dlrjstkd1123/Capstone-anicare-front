@@ -11,7 +11,7 @@ const { kakao } = window;
 
 const KEYWORD_LIST = [
   { id: 1, value: '애견카페', emoji: '☕️' },
-  { id: 2, value: '동물병원', emoji: '🧑‍⚕️' },
+  { id: 2, value: '동물병원', emoji: '💊' },
   { id: 3, value: '애견호텔', emoji: '🏨' },
 ];
 
@@ -298,6 +298,7 @@ const Kakao = () => {
               selected={item.value === keyword}
               // 키워드를 선택할 때 이동한 중심 좌표를 저장하도록 변경
               onClick={() => handleKeywordSelect(item.value)} 
+              style={{ fontFamily: "Noto Sans KR" }}
             >
               {item.value} {item.emoji}
             </S.KeywordBtn>

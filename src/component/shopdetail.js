@@ -49,7 +49,7 @@ function ShopDetail(props) {
                             <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopDetailButton'>-</Button>
                             <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopDetailButton'>+</Button>
                         </ButtonGroup> */}
-                        <button className='ShopDetailBottomBt' style={{marginTop:"0px"}}>구매하러 가기</button>
+                        <a href={`${detailproduct.link}`}><button className='ShopDetailBottomBt' style={{marginTop:"0px"}}>구매하러 가기</button></a>
                     </Typography>
 
                 </Box>

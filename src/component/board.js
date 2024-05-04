@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import '../css/map.css';
 import React, { useEffect, useState } from 'react';
 import { Card, List, ListItem, ListItemButton, ListItemText, Typography, Divider, Box, Fab, BottomNavigation, BottomNavigationAction, Tab, Tabs } from '@mui/material';
 import { Add as AddIcon, Folder as FolderIcon, Restore as RestoreIcon, Favorite as FavoriteIcon, LocationOn as LocationOnIcon } from '@mui/icons-material';
@@ -9,7 +10,7 @@ import { faHouse, faCamera, faAngleLeft } from '@fortawesome/free-solid-svg-icon
 function Board(props) {
     const navigate = useNavigate();
     const [tabValue, setTabValue] = useState(0);
-    const [mainlist, Setmainlist] = useState([]); // mainlist와 Setmainlist를 추가하거나 가져옵니다.
+    const [mainlist, Setmainlist] = useState(["게시판"]); // mainlist와 Setmainlist를 추가하거나 가져옵니다.
 
     const handleWriteClick = () => {
         navigate('/write');
@@ -49,9 +50,9 @@ function Board(props) {
 
     return (
         <Box sx={{ position: 'relative', width: '100%' }}>
-            <div className="MainpageDiv">
+            <div className="Mainpage">
                 {/* MainpageDiv의 내용 */}
-                <p className='Logoname'>에케플</p>
+                <p className='Logoname' style={{fontSize:"27px"}}>에케플</p>
                 <div className="MainTopNavListBox">
                     <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {
                         let copy = [...mainlist];
@@ -118,15 +119,26 @@ function Board(props) {
             <Fab color="primary" aria-label="add" sx={{ position: 'fixed', bottom: 70, right: 16 }} onClick={handleWriteClick}>
                 <AddIcon />
             </Fab>
-            <div className="MainBottomNav">
-                {/* MainBottomNav의 내용 */}
-                <BottomNavigation sx={{ width: '100%', position: 'fixed', bottom: 0 }}>
-                    <BottomNavigationAction label="Main" value="main" icon={<FontAwesomeIcon icon={faHouse} />} component={Link} to="/main" />
-                    <BottomNavigationAction label="Camera" value="camera" icon={<FontAwesomeIcon icon={faCamera} />} component={Link} to="/camera" />
-                    {/* You can add more BottomNavigationAction as needed */}
-                    <BottomNavigationAction label="Back" value="back" icon={<FontAwesomeIcon icon={faAngleLeft} />} onClick={() => navigate(-1)} />
-                </BottomNavigation>
-            </div>
+            <div className='MainBottomNav'>
+                    <Link to="/main" style={{ textDecoration: "none", color: "#9a9a9a" }}>
+                        <div>
+                        <FontAwesomeIcon icon={faHouse} />
+                        </div>
+                    </Link>
+                    <Link to="/camera" style={{ textDecoration: "none", color: "#9a9a9a" }}>
+                        <div>
+                        <FontAwesomeIcon icon={faCamera} />
+                        </div>
+                    </Link>
+                    
+                        <div>
+                        <FontAwesomeIcon icon={faAngleLeft} onClick={()=>{
+                                navigate(-1)
+                            }} />
+                            
+                        </div>
+                    
+                </div>
         </Box>
     );
 }
