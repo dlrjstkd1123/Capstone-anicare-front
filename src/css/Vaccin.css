@@ -52,6 +52,10 @@
     font-weight: 600;
 
 }
+.VaccinButtonContainer {
+    display: flex;
+    justify-content: center;
+}
 
 .VaccinButton {
     background-color: #e84f13;
@@ -62,9 +66,10 @@
     border: none;
     color: white;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 800;
     letter-spacing: 1px;
     margin-bottom: 90px;
+
 }
 
 .vaccinselect {
@@ -179,4 +184,24 @@
     margin: 5%;
     font-size: 17px!important;
     padding: 5px;
+}
+.Vaccinpage {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Vaccinpage > p {
+    /* 다른 스타일들과 충돌하지 않도록 필요한 경우 여기에 추가합니다. */
+    text-align: center; /* 가운데 정렬 */
+    font-weight: 100!important;
+    background-color: #e84f13;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    width: 60%;
+    line-height: 35px;
+    height: 35px; /* 너비 지정 */
+    margin-left: auto; /* 좌우 마진을 자동으로 설정하여 가운데 정렬 */
+    margin-right: auto; /* 좌우 마진을 자동으로 설정하여 가운데 정렬 */
 }

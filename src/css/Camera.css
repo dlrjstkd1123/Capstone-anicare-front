@@ -23,7 +23,7 @@
     width: 150px;
     height: 30px;
     margin-top: 60px;
-    border-radius: 20px;
+    border-radius: 10px;
     border: none;
     color: white;
     font-size: 16px;
@@ -50,10 +50,12 @@
     transition: all 0.6s;
 }
 .UploadPhotoSee>img{
-    width: 60%;
+    width: 200px;
+    height: 200px;
     border: 1px solid rgb(226, 224, 224);
-    margin-top: 10%;
+    margin-top: 13%;
     border-radius: 20px;
+
 }
 
 
@@ -71,4 +73,19 @@
 
 .CameraActive {
     height: 720px;
+}
+.UploadPhotoSeeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 좌우 가운데 정렬을 위해 사용 */
+    align-items: center; /* 수직 가운데 정렬을 위해 사용 */
+    height: 100%; /* 부모 요소의 높이를 차지하기 위해 사용 */
+}
+
+.UploadPhotoSee {
+    max-width: 350px; /* 최대 너비 설정 */
+    text-align: center; /* 내부 요소를 가운데 정렬하기 위해 사용 */
+}
+.UploadPhotoSeeContainer > p{
+    font-size: 17px;
 }

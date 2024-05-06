@@ -5,7 +5,7 @@ import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.cs
 import axios from 'axios';
 import * as LR from '@uploadcare/blocks';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera, faAngleLeft,faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faCamera, faAngleLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
 
 import React, { useEffect, useState, useRef } from 'react';
 LR.registerBlocks(LR);
@@ -15,7 +15,7 @@ function Camera() {
     const [files, setFiles] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
     const ctxProviderRef = useRef(null);
-
+    
     useEffect(() => {
         const ctxProvider = ctxProviderRef.current;
         if (!ctxProvider) return;
@@ -31,15 +31,24 @@ function Camera() {
         };
     }, [setFiles]);
     useEffect(() => {
-        if (files.length > 0) {
-            const file = files[0].file; // 첫 번째 파일만 고려
+        if (files.length === 0) {
+            setImageUrl("cameralogo.png");
+        } else {
+            const file = files[0].file;
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => {
                 setImageUrl(reader.result);
             };
         }
-    }, [files]);
+    }, [files]); // files 상태가 변경될 때만 호출됩니다.
+
+    // 초기 렌더링 시에도 호출되도록 추가
+    useEffect(() => {
+        if (files.length === 0) {
+            setImageUrl("../picture/사진등록.JPG");
+        }
+    }, []);
     const [isScrolled, setIsScrolled] = useState(false);
     let [cammodal, setCammodal] = useState(false);
 
@@ -107,7 +116,7 @@ function Camera() {
             </div>
 
             <div className={`CameraContainer ${cammodal ? 'active' : ''}`}>
-                <div className="CameraLogo" style={{marginTop:"230px"}} >
+                <div className="CameraLogo" style={{ marginTop: "180px" }} >
                     <img src="../picture/camera.png" />
                 </div>
                 <div className="PhotoUpload">
@@ -133,8 +142,11 @@ function Camera() {
                                 ref={ctxProviderRef}
                             />
                         </div>
-                        <div className='UploadPhotoSee'>
-                            <img src={imageUrl} alt="Uploaded" />
+                        <div className='UploadPhotoSeeContainer'>
+                            
+                            <div className='UploadPhotoSee'>
+                                <img src={imageUrl} alt="Uploaded" />
+                            </div>
                         </div>
                         <div className='CameraButtonContainer'>
                             {/* handleUpload 함수를 호출하는 버튼 */}

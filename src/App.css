@@ -124,7 +124,7 @@
 }
 .MainSectionTopBox{
   width: 95%;
-  margin-top: 180px!important;
+  margin-top: 160px!important;
   text-align: left;
   border-radius: 10px;
   background-color: #ffffe2;
@@ -292,4 +292,8 @@ input::placeholder {
   border: none;
   border-radius: 5px;
   margin-left: 10px;
+}
+.MainSectionLogo > p{
+  font-size: 15px;
+  color: #5e5e5e;
 }

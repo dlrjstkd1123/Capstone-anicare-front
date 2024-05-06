@@ -38,7 +38,7 @@ function VaccinPage() {
         day: 'numeric',
     });
 
-   
+
 
 
     const formattedDateObject = selectedVaccinData ? new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + selectedVaccinData.date) : null;
@@ -111,11 +111,11 @@ function VaccinPage() {
 
             </div>
             <div className='MainTopLogoBox' >
-                <div className='MainSectionTopBox' style={{ marginBottom: "20px" }}>
+                <div className='MainSectionTopBox' style={{ marginBottom: "10px" }}>
 
 
-                    <h5 style={{ marginTop: "30px", marginBottom: "10px", color: "grey" }}>자신의 반려견 또는 유기견을 찍어보세요!</h5>
-                    <h2 style={{ margin: "0" }}>질병분석,견종분석 기능 포함</h2>
+                    <h6 style={{ marginTop: "20px", marginBottom: "5px", color: "grey" }}>자신의 반려견 또는 유기견을 찍어보세요!</h6>
+                    <h3 style={{ margin: "0" }}>질병분석,견종분석 기능 포함</h3>
                     <Link to="/camera"><button className='MainSectionTopButton'>촬영하러 가기</button></Link>
                 </div>
             </div>
@@ -144,7 +144,7 @@ function VaccinPage() {
                     }}>광견병</button>
                 </Grid>
             </Grid>
-            <p style={{ fontWeight: "700" }}>과거 접종 여부</p>
+            <p style={{ fontWeight: "700", backgroundColor: "#e84f13", color: "white", fontSize: "17px", width: "60%" }}>과거 접종 여부</p>
             <Grid className='GridContainernum' container rowSpacing={0} columnSpacing={{ xs: 0, sm: 1, md: 3 }}>
                 <Grid item xs={3}>
                     <button className={`vaccinselect ${vaccinyn === 0 ? "VaccinSelected" : ""}`} onClick={() => {
@@ -164,25 +164,25 @@ function VaccinPage() {
                 </Grid>
 
             </Grid>
-            <p style={{ fontWeight: "700" }}>과거 접종 날짜</p>
+            <p style={{ fontWeight: "300", backgroundColor: "#e84f13", color: "white", fontSize: "17px" }}>과거 접종 날짜</p>
             <ReactDatePicker className="DatePicker"></ReactDatePicker>
-            <button className='VaccinButton' onClick={() => {
-                if (vaccin && selectedVaccinData) {
-                    VaccinPost(vaccin, vaccinyn, formattedDate, selectedVaccinData);
-                    setVaccinmod(true);
-
-
-                }
-            }}>분석하기</button>
+            <div className="VaccinButtonContainer">
+                <button className='VaccinButton' onClick={() => {
+                    if (vaccin && selectedVaccinData) {
+                        VaccinPost(vaccin, vaccinyn, formattedDate, selectedVaccinData);
+                        setVaccinmod(true);
+                    }
+                }}>분석하기</button>
+            </div>
 
             <div className={`vaccinMod ${vaccinmod == true ? "active" : null}`}>
                 <div className="vaccinModContentBox">
 
-                    {selectedVaccinData &&  (
+                    {selectedVaccinData && (
 
                         <div className={`vaccinModSection`}>
-                            <div className = "vaccinModTop"style={{textAlign:"left"}}>접종</div>
-                            <div className = "vaccinModTitle"style={{ fontSize: "20px", marginLeft: "9%" }}>{selectedVaccinData.name}</div>
+                            <div className="vaccinModTop" style={{ textAlign: "left" }}>접종</div>
+                            <div className="vaccinModTitle" style={{ fontSize: "20px", marginLeft: "9%" }}>{selectedVaccinData.name}</div>
                             <div style={{ fontSize: "13px", margin: "10%" }}>{selectedVaccinData.content}</div>
                             <div style={{ fontSize: "13px", margin: "10%" }} dangerouslySetInnerHTML={{ __html: selectedVaccinData.vaccindatacontent }}></div>
                             <div style={{ fontSize: "13px", margin: "10%" }}>접종횟수: {selectedVaccinData.num} 회</div>
