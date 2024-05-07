@@ -162,7 +162,7 @@ function Camera() {
                                     for (const pair of formData.entries()) {
                                         console.log(pair[0], pair[1]);
                                     }
-                                    axios.post('http://localhost:8080/api/images', formData, {
+                                    axios.post('http://3.38.225.120:8080/api/images', formData, {
                                         headers: {
                                             'Content-Type': 'multipart/form-data'
                                         }
@@ -170,6 +170,7 @@ function Camera() {
                                         // 파일 업로드 성공 시 실행되는 코드
                                         console.log('File uploaded successfully:', response.data);
                                         alert("파일이 성공적으로 업로드되었습니다.");
+                                        
                                     }).catch(error => {
                                         // 파일 업로드 실패 시 실행되는 코드
                                         console.error('Error uploading file:', error);
@@ -190,7 +191,7 @@ function Camera() {
                                     for (const pair of formData.entries()) {
                                         console.log(pair[0], pair[1]);
                                     }
-                                    axios.post('http://localhost:8080/api/images', formData, {
+                                    axios.post('http://3.38.225.120:8080/api/images', formData, {
                                         headers: {
                                             'Content-Type': 'multipart/form-data'
                                         }
