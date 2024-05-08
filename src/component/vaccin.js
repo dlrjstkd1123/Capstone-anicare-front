@@ -110,7 +110,7 @@ function VaccinPage() {
                 </div>
 
             </div>
-            <div className='MainTopLogoBox' >
+            <div className='MainTopLogoBox' style={{marginTop:"-30px"}} >
                 <div className='MainSectionTopBox' style={{ marginBottom: "10px" }}>
 
 
@@ -144,7 +144,7 @@ function VaccinPage() {
                     }}>광견병</button>
                 </Grid>
             </Grid>
-            <p style={{ fontWeight: "700", backgroundColor: "#e84f13", color: "white", fontSize: "17px", width: "60%" }}>과거 접종 여부</p>
+            <p style={{ fontWeight: "700",fontSize: "17px", width: "60%" }}>과거 접종 여부</p>
             <Grid className='GridContainernum' container rowSpacing={0} columnSpacing={{ xs: 0, sm: 1, md: 3 }}>
                 <Grid item xs={3}>
                     <button className={`vaccinselect ${vaccinyn === 0 ? "VaccinSelected" : ""}`} onClick={() => {
@@ -164,7 +164,7 @@ function VaccinPage() {
                 </Grid>
 
             </Grid>
-            <p style={{ fontWeight: "300", backgroundColor: "#e84f13", color: "white", fontSize: "17px" }}>과거 접종 날짜</p>
+            <p style={{ fontWeight: "300", fontSize: "17px" }}>과거 접종 날짜</p>
             <ReactDatePicker className="DatePicker"></ReactDatePicker>
             <div className="VaccinButtonContainer">
                 <button className='VaccinButton' onClick={() => {
@@ -183,10 +183,10 @@ function VaccinPage() {
                         <div className={`vaccinModSection`}>
                             <div className="vaccinModTop" style={{ textAlign: "left" }}>접종</div>
                             <div className="vaccinModTitle" style={{ fontSize: "20px", marginLeft: "9%" }}>{selectedVaccinData.name}</div>
-                            <div style={{ fontSize: "13px", margin: "10%" }}>{selectedVaccinData.content}</div>
-                            <div style={{ fontSize: "13px", margin: "10%" }} dangerouslySetInnerHTML={{ __html: selectedVaccinData.vaccindatacontent }}></div>
-                            <div style={{ fontSize: "13px", margin: "10%" }}>접종횟수: {selectedVaccinData.num} 회</div>
-                            <div style={{ fontSize: "13px", margin: "10%" }}>다음 예상 접종 일자: {formattedDateString} </div>
+                            <div style={{ fontSize: "11px", margin: "10%" ,color:"#555454"}}>{selectedVaccinData.content}</div>
+                            <div style={{ fontSize: "11px", margin: "10%",color:"#555454" }} dangerouslySetInnerHTML={{ __html: selectedVaccinData.vaccindatacontent }}></div>
+                            <div style={{ fontSize: "11px", margin: "10%" ,color:"#555454"}}>접종횟수: {selectedVaccinData.num} 회</div>
+                            <div style={{ fontSize: "11px", margin: "10%",color:"#555454" }}>다음 예상 접종 일자: {formattedDateString} </div>
                         </div>
                     )}
                 </div>

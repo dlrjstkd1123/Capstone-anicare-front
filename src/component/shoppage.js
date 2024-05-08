@@ -83,7 +83,7 @@ function ShopPage(props) {
                         multiline
                         maxRows={4}
                         zIndex={-1}
-                        style={{marginTop:"180px",marginBottom:"-150px"}}
+                        style={{marginTop:"140px",marginBottom:"-150px"}}
                         onChange={(e) => setSearch(e.target.value)}
                     />
 

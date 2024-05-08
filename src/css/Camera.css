@@ -22,7 +22,7 @@
     background-color: #e84f13;
     width: 150px;
     height: 30px;
-    margin-top: 60px;
+    margin-top: 30px;
     border-radius: 10px;
     border: none;
     color: white;
@@ -37,7 +37,7 @@
     width: 100%;
     justify-content: center;
     position: fixed;
-    bottom: 10%;
+    bottom: 17%;
 }
 
 .CameraContainer {
@@ -88,4 +88,7 @@
 }
 .UploadPhotoSeeContainer > p{
     font-size: 17px;
+}
+.visual-drop-area{
+    width: 150px;
 }

@@ -119,16 +119,16 @@
     height: 620px;
     width: 80%;
     z-index: -5;
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
     position: fixed;
-    top: 40%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%)
 }
 
 .vaccinMod.active {
     opacity: 1;
-    height: 620px;
+    height: 580px;
     width: 80%;
     position: fixed;
     z-index: 3;
@@ -136,8 +136,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    border-radius: 30px;
-    border: 2px solid #e84f13;
+    border-radius: 15px;
+    border: 1px solid #9f9f9f;
 
 }
 
@@ -195,9 +195,9 @@
     /* 다른 스타일들과 충돌하지 않도록 필요한 경우 여기에 추가합니다. */
     text-align: center; /* 가운데 정렬 */
     font-weight: 100!important;
-    background-color: #e84f13;
+    /* background-color: #e84f13; */
     border-radius: 10px;
-    color: white;
+    color: rgb(39, 37, 37);
     font-size: 15px;
     width: 60%;
     line-height: 35px;
