@@ -165,12 +165,12 @@ function Camera() {
                                 else {
                                     let 토큰검사 = localStorage.getItem("accessToken")
                                     const formData = new FormData();
-                                    formData.append('file', files[0].file); // 파일 직접 업로드
+                                    formData.append('image', files[0].file); // 파일 직접 업로드
 
                                     for (const pair of formData.entries()) {
                                         console.log(pair[0], pair[1]);
                                     }
-                                    axios.post('http://43.202.191.93:5000/predict', formData, {
+                                    axios.post('http://3.38.225.120:8080/api/images', formData, {
                                         headers: {
                                             'Content-Type': 'multipart/form-data',
                                             'token': 토큰검사
@@ -204,7 +204,7 @@ function Camera() {
                                     axios.post('http://3.38.225.120:8080/api/images', formData, {
                                         headers: {
                                             'Content-Type': 'multipart/form-data',
-                                            'token': 토큰검사
+                                            // 'token': 토큰검사
 
                                         }
                                     }).then(response => {

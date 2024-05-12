@@ -62,7 +62,7 @@ function Main() {
     }, [currentImageIndex]);
     return (
 
-        <div style={{ overflowX: "hidden",height:"850px"}} >
+        <div style={{ overflowX: "hidden",height:"880px"}} >
             <div className='MainTopLogoBox' style={{paddingTop:"100px"}}>
                 <div className='MainSectionTopBox' style={{ marginTop: "180px!!important" }}>
 

@@ -121,7 +121,7 @@ function ShopDetail(props) {
             </div>
             {/* 여기서부터 shopdetail html */}
 
-            <div className='ShopDetailContainer'style={{height:"850px"}} >
+            <div className='ShopDetailContainer'style={{height:"880px"}} >
                 <div className='ShopDetailTop' style={{ marginTop: "150px" }}><img src={`../picture/shop${detailproduct.id}.JPG`} alt="" /></div>
                 <div className='ShopDetailSection' style={{ marginTop: "40px" }}>
                     <IntroDivider className="IntroDivider"  ></IntroDivider>
