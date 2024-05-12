@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Link ,useNavigate} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import '../css/Shop.css';
@@ -12,7 +12,7 @@ import {
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera,faAngleLeft ,faHouse} from "@fortawesome/free-solid-svg-icons";
+import { faCamera, faAngleLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
 function ShopPage(props) {
     const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
@@ -33,14 +33,20 @@ function ShopPage(props) {
         setFilterShop(filtered);
 
     }, [search, props.shop]);
-
+    const handleLogout = () => {
+        // 로컬 스토리지에서 토큰 삭제
+        localStorage.removeItem('accessToken');
+        navigate('/login');
+        // 로그인 상태 업데이트
+        // 이 부분은 필요에 따라 추가적인 처리를 할 수 있습니다.
+    };
     return (
         <div className="Mainpage">
             <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
-                <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 
                     <p className='Logoname'>에케플</p>
-
+                    <p className='Logout' onClick={handleLogout}>로그아웃</p>
                 </div>
                 <div className="MainTopNavListBox">
                     <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {
@@ -67,7 +73,7 @@ function ShopPage(props) {
 
                 </div>
             </div>
-            <Box 
+            <Box
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '90%' },
@@ -83,7 +89,7 @@ function ShopPage(props) {
                         multiline
                         maxRows={4}
                         zIndex={-1}
-                        style={{marginTop:"140px",marginBottom:"-150px"}}
+                        style={{ marginTop: "140px", marginBottom: "-150px" }}
                         onChange={(e) => setSearch(e.target.value)}
                     />
 
@@ -92,28 +98,28 @@ function ShopPage(props) {
 
             </Box>
             <div className='MainBottomNav'>
-                    <Link to="/main" style={{ textDecoration: "none", color: "#9a9a9a" }}>
-                        <div>
+                <Link to="/main" style={{ textDecoration: "none", color: "#9a9a9a" }}>
+                    <div>
                         <FontAwesomeIcon icon={faHouse} />
-                        </div>
-                    </Link>
-                    <Link to="/camera" style={{ textDecoration: "none", color: "#9a9a9a" }}>
-                        <div>
+                    </div>
+                </Link>
+                <Link to="/camera" style={{ textDecoration: "none", color: "#9a9a9a" }}>
+                    <div>
                         <FontAwesomeIcon icon={faCamera} />
-                        </div>
-                    </Link>
-                    
-                        <div>
-                        <FontAwesomeIcon icon={faAngleLeft} onClick={()=>{
-                                navigate(-1)
-                            }} />
-                            
-                        </div>
-                    
+                    </div>
+                </Link>
+
+                <div>
+                    <FontAwesomeIcon icon={faAngleLeft} onClick={() => {
+                        navigate(-1)
+                    }} />
+
                 </div>
+
+            </div>
             {/* 여기서부터 shop html */}
             <div className='ShopContainer' >
-                <div className='ShopTop'>
+                <div className='ShopTop' style={{marginBottom:"30px"}}>
 
                     {/* <input
                         type="text"
@@ -126,11 +132,11 @@ function ShopPage(props) {
                         <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopButton'>편리용품</Button>
                     </ButtonGroup> */}
                     <div className='MainTopLogoBox'>
-                        <div className='MainSectionTopBox' style={{ marginTop: "5px" }}>
+                        <div className='MainSectionTopBox' style={{ marginTop: "160px!important" }}>
 
 
-                            <h5 style={{ marginTop: "30px", marginBottom: "10px", color: "grey" }}>자신의 반려견 또는 유기견을 찍어보세요!</h5>
-                            <h2 style={{ margin: "0" }}>질병분석,견종분석 기능 포함</h2>
+                            <h6 style={{ marginTop: "30px", marginBottom: "10px", color: "grey" }}>자신의 반려견 또는 유기견을 찍어보세요!</h6>
+                            <h3 style={{ margin: "0" }}>질병분석,견종분석 기능 포함</h3>
                             <Link to="/camera"><button className='MainSectionTopButton'>촬영하러 가기</button></Link>
                         </div>
                     </div>
@@ -149,7 +155,7 @@ function ShopPage(props) {
                                                     <img src={`../picture/shop${a.id}.JPG`} width="100%" height="60%" className='ShopImage' />
                                                 </Link>
 
-                                                <h6 style={{ marginTop: "13px",fontSize:"13px" }}>{a.product}</h6>
+                                                <h6 style={{ marginTop: "13px", fontSize: "13px" }}>{a.product}</h6>
 
 
                                             </div>

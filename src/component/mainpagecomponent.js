@@ -10,15 +10,22 @@ function MainPage() {
     const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
     let [mainlist, Setmainlist] = useState([])
+    const handleLogout = () => {
+        // 로컬 스토리지에서 토큰 삭제
+        localStorage.removeItem('accessToken');
+        navigate('/login');
+        // 로그인 상태 업데이트
+        // 이 부분은 필요에 따라 추가적인 처리를 할 수 있습니다.
+    };
 
 
     return (
         <div className="Mainpage">
            <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
-                <div>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
 
                     <p className='Logoname'>에케플</p>
-
+                    <p className='Logout' onClick={handleLogout}>로그아웃</p>
                 </div>
                 <div className="MainTopNavListBox">
                     <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {
@@ -61,7 +68,7 @@ function MainPage() {
 
                 <div>
                     <FontAwesomeIcon icon={faAngleLeft} onClick={() => {
-                        navigate(-1)
+                        alert("더 이상 뒤로 갈 수 없습니다")
                     }} />
 
                 </div>

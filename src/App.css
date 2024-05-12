@@ -27,6 +27,7 @@
   background-color: white;
   border-bottom: 1px solid silver;
   z-index: 3;
+  top: 0;
 }
 .Logoname{
   font-family: 'BagelFatOne-Regular'!important;
@@ -125,7 +126,7 @@
 }
 .MainSectionTopBox{
   width: 95%;
-  margin-top: 160px!important;
+  margin-top: 30px!important;
   text-align: left;
   border-radius: 10px;
   background-color: #ffffe2;
@@ -296,5 +297,10 @@ input::placeholder {
 }
 .MainSectionLogo > p{
   font-size: 15px;
+  color: #5e5e5e;
+}
+.Logout{
+  padding-right: 7%;
+  font-size: 13px;
   color: #5e5e5e;
 }

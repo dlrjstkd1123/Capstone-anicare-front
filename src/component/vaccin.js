@@ -10,6 +10,13 @@ import { faCamera, faAngleLeft, faHouse } from "@fortawesome/free-solid-svg-icon
 import { formatDate } from 'date-fns';
 import vaccindata1 from '../vaccindata';
 function VaccinPage() {
+    const handleLogout = () => {
+        // 로컬 스토리지에서 토큰 삭제
+        localStorage.removeItem('accessToken');
+        navigate('/login');
+        // 로그인 상태 업데이트
+        // 이 부분은 필요에 따라 추가적인 처리를 할 수 있습니다.
+    };
 
     const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
@@ -28,6 +35,7 @@ function VaccinPage() {
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     dateFormat="yyyy년-MM월-dd일"
+                   
                 />
             </div>
         );
@@ -53,13 +61,13 @@ function VaccinPage() {
 
 
     return (
-        <div className="Vaccinpage" >
+        <div className="Vaccinpage" style={{height:"910px"}} >
             <div className="Mainpage">
                 <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
-                    <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 
                         <p className='Logoname'>에케플</p>
-
+                        <p className='Logout' onClick={handleLogout}>로그아웃</p>
                     </div>
                     <div className="MainTopNavListBox">
                         <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {
@@ -88,7 +96,7 @@ function VaccinPage() {
                     </div>
                 </div>
 
-                <div className='MainBottomNav'>
+                <div className='MainBottomNav' style={{zIndex:"3"}}>
                     <Link to="/main" style={{ textDecoration: "none", color: "#9a9a9a" }}>
                         <div>
                             <FontAwesomeIcon icon={faHouse} />
@@ -110,7 +118,7 @@ function VaccinPage() {
                 </div>
 
             </div>
-            <div className='MainTopLogoBox' style={{marginTop:"-30px"}} >
+            <div className='MainTopLogoBox' style={{ marginTop: "" }} >
                 <div className='MainSectionTopBox' style={{ marginBottom: "10px" }}>
 
 
@@ -144,7 +152,7 @@ function VaccinPage() {
                     }}>광견병</button>
                 </Grid>
             </Grid>
-            <p style={{ fontWeight: "700",fontSize: "17px", width: "60%" }}>과거 접종 여부</p>
+            <p style={{ fontWeight: "700", fontSize: "17px", width: "60%" }}>과거 접종 여부</p>
             <Grid className='GridContainernum' container rowSpacing={0} columnSpacing={{ xs: 0, sm: 1, md: 3 }}>
                 <Grid item xs={3}>
                     <button className={`vaccinselect ${vaccinyn === 0 ? "VaccinSelected" : ""}`} onClick={() => {
@@ -183,10 +191,10 @@ function VaccinPage() {
                         <div className={`vaccinModSection`}>
                             <div className="vaccinModTop" style={{ textAlign: "left" }}>접종</div>
                             <div className="vaccinModTitle" style={{ fontSize: "20px", marginLeft: "9%" }}>{selectedVaccinData.name}</div>
-                            <div style={{ fontSize: "11px", margin: "10%" ,color:"#555454"}}>{selectedVaccinData.content}</div>
-                            <div style={{ fontSize: "11px", margin: "10%",color:"#555454" }} dangerouslySetInnerHTML={{ __html: selectedVaccinData.vaccindatacontent }}></div>
-                            <div style={{ fontSize: "11px", margin: "10%" ,color:"#555454"}}>접종횟수: {selectedVaccinData.num} 회</div>
-                            <div style={{ fontSize: "11px", margin: "10%",color:"#555454" }}>다음 예상 접종 일자: {formattedDateString} </div>
+                            <div style={{ fontSize: "11px", margin: "10%", color: "#555454" }}>{selectedVaccinData.content}</div>
+                            <div style={{ fontSize: "11px", margin: "10%", color: "#555454" }} dangerouslySetInnerHTML={{ __html: selectedVaccinData.vaccindatacontent }}></div>
+                            <div style={{ fontSize: "11px", margin: "10%", color: "#555454" }}>접종횟수: {selectedVaccinData.num} 회</div>
+                            <div style={{ fontSize: "11px", margin: "10%", color: "#555454" }}>다음 예상 접종 일자: {formattedDateString} </div>
                         </div>
                     )}
                 </div>

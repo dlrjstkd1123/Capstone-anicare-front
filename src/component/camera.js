@@ -15,7 +15,14 @@ function Camera() {
     const [files, setFiles] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
     const ctxProviderRef = useRef(null);
-    
+    const handleLogout = () => {
+        // 로컬 스토리지에서 토큰 삭제
+        localStorage.removeItem('accessToken');
+        navigate('/login');
+        // 로그인 상태 업데이트
+        // 이 부분은 필요에 따라 추가적인 처리를 할 수 있습니다.
+    };
+
     useEffect(() => {
         const ctxProvider = ctxProviderRef.current;
         if (!ctxProvider) return;
@@ -84,10 +91,10 @@ function Camera() {
     return (
         <div className="Mainpage">
             <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
-                <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 
                     <p className='Logoname'>에케플</p>
-
+                    <p className='Logout' onClick={handleLogout}>로그아웃</p>
                 </div>
                 <div className="MainTopNavListBox">
                     <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {
@@ -115,13 +122,19 @@ function Camera() {
                 </div>
             </div>
 
-            <div className={`CameraContainer ${cammodal ? 'active' : ''}`}>
-                <div className="CameraLogo" style={{ marginTop: "160px" }} >
+            <div className={`CameraContainer ${cammodal ? 'active' : ''}`} style={{ height: "850px" }}>
+                {/* <div className="CameraLogo" style={{ marginTop: "160px" }} >
                     <img src="../picture/camera.png" />
-                </div>
-                <div className="PhotoUpload">
+                </div> */}
+                <div className="PhotoUpload" style={{ marginTop: "140px" }}>
                     {/* Cammodal 컴포넌트에 상태와 함수를 전달 */}
-                    <div style={{ marginTop: "30px" }}>
+                    <div >
+                        <div className='UploadPhotoSeeContainer'>
+
+                            <div className='UploadPhotoSee'style={{ marginBottom: "30px" }}>
+                                <img src={imageUrl} alt="Uploaded" />
+                            </div>
+                        </div>
                         <div className='UploadCare'>
                             <lr-config
                                 ctx-name="my-uploader"
@@ -142,12 +155,7 @@ function Camera() {
                                 ref={ctxProviderRef}
                             />
                         </div>
-                        <div className='UploadPhotoSeeContainer'>
-                            
-                            <div className='UploadPhotoSee'>
-                                <img src={imageUrl} alt="Uploaded" />
-                            </div>
-                        </div>
+
                         <div className='CameraButtonContainer'>
                             {/* handleUpload 함수를 호출하는 버튼 */}
                             <button className="CameraButton" onClick={() => {
@@ -155,16 +163,17 @@ function Camera() {
                                     alert("사진을 선택하세요")
                                 }
                                 else {
-
+                                    let 토큰검사 = localStorage.getItem("accessToken")
                                     const formData = new FormData();
-                                    formData.append('image', files[0].file); // 파일 직접 업로드
+                                    formData.append('file', files[0].file); // 파일 직접 업로드
 
                                     for (const pair of formData.entries()) {
                                         console.log(pair[0], pair[1]);
                                     }
-                                    axios.post('http://211.184.246.203:5000', formData, {
+                                    axios.post('http://43.202.191.93:5000/predict', formData, {
                                         headers: {
-                                            'Content-Type': 'multipart/form-data'
+                                            'Content-Type': 'multipart/form-data',
+                                            'token': 토큰검사
                                         }
                                     }).then(response => {
                                         // 파일 업로드 성공 시 실행되는 코드
@@ -180,11 +189,12 @@ function Camera() {
 
                             }}>종 분석하기</button>
                             <button className="CameraButton" onClick={() => {
+
                                 if (files.length === 0) {
                                     alert("사진을 선택하세요")
                                 }
                                 else {
-
+                                    let 토큰검사 = localStorage.getItem("accessToken")
                                     const formData = new FormData();
                                     formData.append('image', files[0].file); // 파일 직접 업로드
 
@@ -193,7 +203,9 @@ function Camera() {
                                     }
                                     axios.post('http://3.38.225.120:8080/api/images', formData, {
                                         headers: {
-                                            'Content-Type': 'multipart/form-data'
+                                            'Content-Type': 'multipart/form-data',
+                                            'token': 토큰검사
+
                                         }
                                     }).then(response => {
                                         // 파일 업로드 성공 시 실행되는 코드

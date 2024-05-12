@@ -62,9 +62,9 @@ function Main() {
     }, [currentImageIndex]);
     return (
 
-        <div style={{ overflowX: "hidden" }}>
-            <div className='MainTopLogoBox'>
-                <div className='MainSectionTopBox' style={{ marginTop: "-5px" }}>
+        <div style={{ overflowX: "hidden",height:"850px"}} >
+            <div className='MainTopLogoBox' style={{paddingTop:"100px"}}>
+                <div className='MainSectionTopBox' style={{ marginTop: "180px!!important" }}>
 
 
                     <h6 style={{ marginTop: "20px", marginBottom: "10px", color: "grey" }}>자신의 반려견 또는 유기견을 찍어보세요!</h6>

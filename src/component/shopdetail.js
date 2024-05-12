@@ -15,10 +15,17 @@ import {
 
 } from '@mui/material';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera, faAngleLeft,faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faCamera, faAngleLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
 
 
 function ShopDetail(props) {
+    const handleLogout = () => {
+        // 로컬 스토리지에서 토큰 삭제
+        localStorage.removeItem('accessToken');
+        navigate('/login');
+        // 로그인 상태 업데이트
+        // 이 부분은 필요에 따라 추가적인 처리를 할 수 있습니다.
+    };
     const navigate = useNavigate();
     const [mainlist, Setmainlist] = useState(["상점"]);
     let { id } = useParams();
@@ -49,7 +56,7 @@ function ShopDetail(props) {
                             <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopDetailButton'>-</Button>
                             <Button style={{ backgroundColor: "#5baee9", fontWeight: "600" }} className='ShopDetailButton'>+</Button>
                         </ButtonGroup> */}
-                        <a href={`${detailproduct.link}`}><button className='ShopDetailBottomBt' style={{marginTop:"0px"}}>구매하러 가기</button></a>
+                        <a href={`${detailproduct.link}`}><button className='ShopDetailBottomBt' style={{ marginTop: "0px" }}>구매하러 가기</button></a>
                     </Typography>
 
                 </Box>
@@ -62,10 +69,10 @@ function ShopDetail(props) {
     return (
         <div className="Mainpage">
             <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
-                <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 
                     <p className='Logoname'>에케플</p>
-
+                    <p className='Logout' onClick={handleLogout}>로그아웃</p>
                 </div>
                 <div className="MainTopNavListBox">
                     <Link to="/shop" style={{ color: "rgb(111, 111, 111)", textDecoration: "none" }}><p className={`MainTopNavList ${mainlist[0] === "상점" ? "active" : ""}`} onClick={() => {
@@ -113,10 +120,10 @@ function ShopDetail(props) {
 
             </div>
             {/* 여기서부터 shopdetail html */}
-            
-            <div className='ShopDetailContainer' >
-                <div className='ShopDetailTop'style={{marginTop:"200px"}}><img src={`../picture/shop${detailproduct.id}.JPG`} alt="" /></div>
-                <div className='ShopDetailSection' style={{marginTop:"90px"}}>
+
+            <div className='ShopDetailContainer'style={{height:"850px"}} >
+                <div className='ShopDetailTop' style={{ marginTop: "150px" }}><img src={`../picture/shop${detailproduct.id}.JPG`} alt="" /></div>
+                <div className='ShopDetailSection' style={{ marginTop: "40px" }}>
                     <IntroDivider className="IntroDivider"  ></IntroDivider>
                 </div>
 
