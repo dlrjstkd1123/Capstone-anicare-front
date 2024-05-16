@@ -10,15 +10,20 @@ import VaccinPage from './component/vaccin';
 import ShopDetail from './component/shopdetail';
 import shop from './shopdata'
 import Camera from './component/camera';
-import Board from './component/board';
 import Map from './component/map';
-import Kakao from './component/kakao';
+import Voc from './component/board/Voc';
+import VocQuestion from './component/board/VocQuestion';
+import VocView from './component/board/VocView';
+import Chatbot from './component/Chatbot';
+import CBOT from './component/cbot';
+import { AuthContextProvider } from './component/context/AuthContext';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 function App() {
 
   return (
     <div className="App">
+      <AuthContextProvider>
 
       <Routes>
         <Route path="/" element={<Login/>}></Route>
@@ -29,9 +34,13 @@ function App() {
         <Route path="/shopdetail/:id" element={<ShopDetail shop={shop}/>}></Route>
         <Route path="/vaccin" element={<VaccinPage/>}></Route>
         <Route path="/camera" element={<Camera/>}></Route>
-        <Route path="/board" element={<Board></Board> }></Route>
         <Route path="/map" element={<Map/>} ></Route>
+        <Route path="/chatbot" element={<CBOT/>} ></Route>
+        <Route path="/board" element={<Voc/>} ></Route>
+        <Route path='/Voc/question' element={<VocQuestion />}  />
+        <Route path='/Voc/:vocId' element={<VocView />}  />
       </Routes>
+      </AuthContextProvider>
     </div>
 
 
