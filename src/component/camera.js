@@ -87,6 +87,9 @@ function Camera() {
             });
             console.log('File uploaded successfully:', response);
             alert("파일이 성공적으로 업로드되었습니다.");
+            const responseData = response.data;
+            const question = `강아지 전문가야 한글로 ${responseData} 견종의 케어법을 다섯줄 이내로 알려줘`;
+            navigate('/chatbot', { state: { question } });
         } catch (error) {
             console.error('Error uploading file:', error);
             alert("파일 업로드 중 오류가 발생했습니다.");

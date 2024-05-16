@@ -8,7 +8,7 @@ function CBOT() {
 
     return (
         <div className="Mainpage">
-            <Chatbot initialMessage={question} />  // Chatbot에 질문 전달
+            <Chatbot initialMessage={question} />
         </div>
     );
 }
