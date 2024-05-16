@@ -15,6 +15,7 @@ function Camera() {
     const [mainlist, Setmainlist] = useState(["카메라"]); // 상태를 배열로 초기화
     const [files, setFiles] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
+    const [loading, setLoading] = useState(false); // 로딩 상태 추가
     const ctxProviderRef = useRef(null);
     const paragraphs = [
         "파일을 업로드 중입니다...",
@@ -24,6 +25,15 @@ function Camera() {
         "배변 패드는 강아지 집과 살짝 먼 곳에 위치하는 걸 아시나요?",
         "배변 패드에 배변했을 때 잘했다고 칭찬해주세요!"
       ];
+      const [currentIndex, setCurrentIndex] = useState(0);
+
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % paragraphs.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+      }, [paragraphs.length]);
     const handleLogout = () => {
         // 로컬 스토리지에서 토큰 삭제
         localStorage.removeItem('accessToken');
