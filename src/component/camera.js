@@ -9,12 +9,32 @@ import { faCamera, faAngleLeft, faHouse } from "@fortawesome/free-solid-svg-icon
 
 import React, { useEffect, useState, useRef } from 'react';
 LR.registerBlocks(LR);
+
 function Camera() {
     const navigate = useNavigate();
     const [mainlist, Setmainlist] = useState(["카메라"]); // 상태를 배열로 초기화
     const [files, setFiles] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
     const ctxProviderRef = useRef(null);
+    const [loading, setLoading] = useState(false); // 로딩 상태 추가
+    const paragraphs = [
+        "파일을 업로드 중입니다...",
+        "강아지의 집은 화장실과 멀리 떨어진 곳에 위치하는 걸 아시나요?",
+        "강아지가 귀여워도 소리 지르지 말기!",
+        "강아지와의 첫 접촉은 손 냄새 맡게 하기!",
+        "배변 패드는 강아지 집과 살짝 먼 곳에 위치하는 걸 아시나요?",
+        "배변 패드에 배변했을 때 잘했다고 칭찬해주세요!"
+      ];
+    
+      const [currentIndex, setCurrentIndex] = useState(0);
+    
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % paragraphs.length);
+        }, 5000);
+    
+        return () => clearInterval(interval);
+      }, [paragraphs.length]);
     const handleLogout = () => {
         // 로컬 스토리지에서 토큰 삭제
         localStorage.removeItem('accessToken');
@@ -37,6 +57,7 @@ function Camera() {
             ctxProvider.removeEventListener('change', handleChangeEvent);
         };
     }, [setFiles]);
+
     useEffect(() => {
         if (files.length === 0) {
             setImageUrl("cameralogo.png");
@@ -56,43 +77,49 @@ function Camera() {
             setImageUrl("../picture/사진등록.JPG");
         }
     }, []);
+
     const [isScrolled, setIsScrolled] = useState(false);
     let [cammodal, setCammodal] = useState(false);
 
-    // Cammodal 컴포넌트에서 파일 업로드를 위한 상태와 함수
-
-
-
-    // const handleUpload = () => {
-    //     console.log(file)
-    //     if (!file) return;
-
-    //     const formData = new FormData();
-    //     formData.append('file', file);
-
-    //     axios.post('http://example.com/upload', formData, {
-    //         headers: {
-    //             'Content-Type': 'multipart/form-data'
-    //         }
-    //     }).then(response => {
-    //         // 파일 업로드 성공 시 실행되는 코드
-    //         alert("Tq?")
-    //         console.log('File uploaded successfully:', response.data);
-    //     }).catch(error => {
-    //         // 파일 업로드 실패 시 실행되는 코드
-    //         console.error('Error uploading file:', error);
-    //         alert("tq")
-    //     });
-    // };
-
     useEffect(() => {
         setCammodal(true);
-    }, [])
+    }, []);
+
+    const handleUpload = async (endpoint) => {
+        if (files.length === 0) {
+            alert("사진을 선택하세요");
+            return;
+        }
+
+        setLoading(true); // 로딩 상태 시작
+        let 토큰검사 = localStorage.getItem("accessToken");
+        const formData = new FormData();
+        formData.append('image', files[0].file);
+
+        try {
+            const response = await axios.post(endpoint, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    // 'token': 토큰검사
+                }
+            });
+            console.log('File uploaded successfully:', response);
+            alert("파일이 성공적으로 업로드되었습니다.");
+            const responseData = response.data;
+            const question = `강아지 전문가야 한글로 ${responseData} 견종의 케어법을 다섯줄 이내로 알려줘`;
+            navigate('/chatbot', { state: { question } });
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            alert("파일 업로드 중 오류가 발생했습니다.");
+        } finally {
+            setLoading(false); // 로딩 상태 종료
+        }
+    };
+
     return (
         <div className="Mainpage">
             <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-
                     <p className='Logoname'>에케플</p>
                     <p className='Logout' onClick={handleLogout}>로그아웃</p>
                 </div>
@@ -117,21 +144,14 @@ function Camera() {
                         copy[0] = "접종";
                         Setmainlist(copy)
                     }}>접종</p></Link>
-
-
                 </div>
             </div>
 
             <div className={`CameraContainer ${cammodal ? 'active' : ''}`} style={{ height: "850px" }}>
-                {/* <div className="CameraLogo" style={{ marginTop: "160px" }} >
-                    <img src="../picture/camera.png" />
-                </div> */}
                 <div className="PhotoUpload" style={{ marginTop: "140px" }}>
-                    {/* Cammodal 컴포넌트에 상태와 함수를 전달 */}
-                    <div >
+                    <div>
                         <div className='UploadPhotoSeeContainer'>
-
-                            <div className='UploadPhotoSee'style={{ marginBottom: "30px" }}>
+                            <div className='UploadPhotoSee' style={{ marginBottom: "30px" }}>
                                 <img src={imageUrl} alt="Uploaded" />
                             </div>
                         </div>
@@ -144,86 +164,36 @@ function Camera() {
                                 maxLocalFileSizeBytes={10000000}
                                 sourceList="local, camera"
                             />
-
                             <lr-file-uploader-regular
                                 ctx-name="my-uploader"
                                 css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.35.2/web/lr-file-uploader-regular.min.css"
                             />
-
                             <lr-upload-ctx-provider
                                 ctx-name="my-uploader"
                                 ref={ctxProviderRef}
                             />
                         </div>
-
                         <div className='CameraButtonContainer'>
-                            {/* handleUpload 함수를 호출하는 버튼 */}
-                            <button className="CameraButton" onClick={() => {
-                                if (files.length === 0) {
-                                    alert("사진을 선택하세요")
-                                }
-                                else {
-                                    let 토큰검사 = localStorage.getItem("accessToken")
-                                    const formData = new FormData();
-                                    formData.append('image', files[0].file); // 파일 직접 업로드
-
-                                    for (const pair of formData.entries()) {
-                                        console.log(pair[0], pair[1]);
-                                    }
-                                    axios.post('http://3.38.225.120:8080/api/images', formData, {
-                                        headers: {
-                                            'Content-Type': 'multipart/form-data',
-                                            'token': 토큰검사
-                                        }
-                                    }).then(response => {
-                                        // 파일 업로드 성공 시 실행되는 코드
-                                        console.log('File uploaded successfully:', response.data);
-                                        alert("파일이 성공적으로 업로드되었습니다.");
-
-                                    }).catch(error => {
-                                        // 파일 업로드 실패 시 실행되는 코드
-                                        console.error('Error uploading file:', error);
-                                        alert("파일 업로드 중 오류가 발생했습니다.");
-                                    });
-                                }
-
-                            }}>종 분석하기</button>
-                            <button className="CameraButton" onClick={() => {
-
-                                if (files.length === 0) {
-                                    alert("사진을 선택하세요")
-                                }
-                                else {
-                                    let 토큰검사 = localStorage.getItem("accessToken")
-                                    const formData = new FormData();
-                                    formData.append('image', files[0].file); // 파일 직접 업로드
-
-                                    for (const pair of formData.entries()) {
-                                        console.log(pair[0], pair[1]);
-                                    }
-                                    axios.post('http://3.38.225.120:8080/api/images', formData, {
-                                        headers: {
-                                            'Content-Type': 'multipart/form-data',
-                                            // 'token': 토큰검사
-
-                                        }
-                                    }).then(response => {
-                                        // 파일 업로드 성공 시 실행되는 코드
-                                        console.log('File uploaded successfully:', response.data);
-                                        alert("파일이 성공적으로 업로드되었습니다.");
-                                    }).catch(error => {
-                                        // 파일 업로드 실패 시 실행되는 코드
-                                        console.error('Error uploading file:', error);
-                                        alert("파일 업로드 중 오류가 발생했습니다.");
-                                    });
-                                }
-
-                            }}>질병 분석하기</button>
+                            <button className="CameraButton" onClick={() => handleUpload('http://3.38.225.120:8080/api/images/pet')}>
+                                종 분석하기
+                            </button>
+                            <button className="CameraButton" onClick={() => handleUpload('http://3.38.225.120:8080/api/images/skin')}>
+                                질병 분석하기
+                            </button>
                         </div>
                     </div>
                 </div>
-                {/* handleUpload 함수를 버튼의 onClick 이벤트에 연결 */}
-
+                {loading && (
+                     <div className="modal">
+                     <div className="modal-content">
+                       {paragraphs.map((text, index) => (
+                         <p key={index} className={index === currentIndex ? "active" : ""}>
+                           {text}
+                         </p>
+                       ))}
+                     </div>
+                   </div>
+                )}
             </div>
 
             <div className='MainBottomNav'>
@@ -237,20 +207,14 @@ function Camera() {
                         <FontAwesomeIcon icon={faCamera} />
                     </div>
                 </Link>
-
                 <div>
                     <FontAwesomeIcon icon={faAngleLeft} onClick={() => {
                         navigate(-1)
                     }} />
-
                 </div>
-
             </div>
-
         </div>
     );
 }
-
-
 
 export default Camera;

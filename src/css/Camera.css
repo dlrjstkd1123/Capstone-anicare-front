@@ -92,3 +92,44 @@
 .visual-drop-area{
     width: 150px;
 }
+/* Add this CSS in your CSS file */
+
+.modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    position: relative;
+    height: 100px; /* height set for the p elements to show in fixed size */
+    overflow: hidden;
+  }
+  
+  .modal-content p {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  
+  .modal-content p.active {
+    opacity: 1;
+  }

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from './context/AuthContext';  // AuthContext 가져오기
 import '../css/Login.css';
 
 function Login() {
+  const { login } = useContext(AuthContext); // AuthContext에서 login 함수 가져오기
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,6 +15,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Handle submit called with username:', username, 'and password:', password);  // 디버깅용 콘솔 출력
 
     try {
       // 아이디와 비밀번호 유효성 검사
@@ -41,11 +44,11 @@ function Login() {
       const accessToken = response.data.response.token;
 
       if (accessToken) {
-        localStorage.setItem('accessToken', accessToken);
+        console.log('Login successful, token received:', accessToken);  // 디버깅용 콘솔 출력
+        login(accessToken, username); // 로그인 시 AuthContext에 사용자 이름과 토큰 저장
         setLoggedIn(true);
       } else {
         setError('토큰을 찾을 수 없습니다.');
-        
       }
     } catch (error) {
       console.error('로그인 실패:', error.message);
