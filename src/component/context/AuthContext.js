@@ -14,6 +14,7 @@ export const AuthContextProvider = ({ children }) => {
   const [userAccountname, setUserAccountname] = useState(null);  // 사용자 이름 상태 초기화
 
   const login = (token, username) => {  // 로그인 함수에 사용자 이름 인자 추가
+    console.log('Login called with token:', token, 'and username:', username);
     localStorage.setItem('accessToken', token);
     localStorage.setItem('userAccountname', username);  // 로컬 스토리지에 사용자 이름 저장
     setAccessToken(token);
@@ -32,6 +33,8 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     const username = localStorage.getItem('userAccountname');  // 로컬 스토리지에서 사용자 이름 검색
+    console.log('Loaded token from localStorage:', token);  // 디버깅용 콘솔 출력
+    console.log('Loaded username from localStorage:', username);  // 디버깅용 콘솔 출력
     if (token && username) {
       login(token, username);
     }
@@ -43,3 +46,7 @@ export const AuthContextProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+/*
+console.log(localStorage.getItem('accessToken'));
+console.log(localStorage.getItem('userAccountname'));
+*/

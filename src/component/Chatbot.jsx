@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Box, TextField, Button, Grid, Paper, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
-const Chatbot = () => {
+const Chatbot = ({ initialMessage }) => {
    const [messages, setMessages] = useState([]);
    const [userInput, setUserInput] = useState('');
-   const [detectedAnimal, setDetectedAnimal] = useState('');
    const [loading, setLoading] = useState(false);
 
    const apiKey = 'sk-proj-26iGA2CfBcjp4imNo25dT3BlbkFJafPJYbpP4jo7af52MDHx';
@@ -15,10 +14,9 @@ const Chatbot = () => {
       setMessages(prevMessages => [...prevMessages, { sender, message }]);
    };
 
-   const handleSendMessage = async () => {
-      const message = userInput.trim();
+   const handleSendMessage = async (message = userInput.trim()) => {
       if (message.length === 0) return;
-   
+  
       addMessage('user', message);
       setUserInput('');
       setLoading(true);
@@ -57,7 +55,11 @@ const Chatbot = () => {
       }
    };
    
-   
+   useEffect(() => {
+      if (initialMessage) {
+         handleSendMessage(initialMessage);
+      }
+   }, [initialMessage]);
 
    return (
       <Box sx={{ p: 2, maxWidth: 600, mx: 'auto', margintop: "50px"}}>
@@ -89,7 +91,7 @@ const Chatbot = () => {
                   variant="contained"
                   color="error"
                   fullWidth
-                  onClick={handleSendMessage}
+                  onClick={() => handleSendMessage()}
                   endIcon={<SendIcon />}
                >
                   Send

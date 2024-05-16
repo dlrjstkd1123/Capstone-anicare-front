@@ -14,13 +14,16 @@ import Map from './component/map';
 import Voc from './component/board/Voc';
 import VocQuestion from './component/board/VocQuestion';
 import VocView from './component/board/VocView';
+import Chatbot from './component/Chatbot';
 import CBOT from './component/cbot';
+import { AuthContextProvider } from './component/context/AuthContext';
 
 
 function App() {
 
   return (
     <div className="App">
+      <AuthContextProvider>
 
       <Routes>
         <Route path="/" element={<Login/>}></Route>
@@ -37,6 +40,7 @@ function App() {
         <Route path='/Voc/question' element={<VocQuestion />}  />
         <Route path='/Voc/:vocId' element={<VocView />}  />
       </Routes>
+      </AuthContextProvider>
     </div>
 
 
