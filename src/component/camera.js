@@ -15,8 +15,24 @@ function Camera() {
     const [mainlist, Setmainlist] = useState(["카메라"]); // 상태를 배열로 초기화
     const [files, setFiles] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
-    const ctxProviderRef = useRef(null);
     const [loading, setLoading] = useState(false); // 로딩 상태 추가
+    const ctxProviderRef = useRef(null);
+    const paragraphs = [
+        "강아지의 집은 화장실과 멀리 떨어진 곳에 위치하는 걸 아시나요?",
+        "강아지가 귀여워도 소리 지르지 말기!",
+        "강아지와의 첫 접촉은 손 냄새 맡게 하기!",
+        "배변 패드는 강아지 집과 살짝 먼 곳에 위치하는 걸 아시나요?",
+        "배변 패드에 배변했을 때 잘했다고 칭찬해주세요!"
+      ];
+      const [currentIndex, setCurrentIndex] = useState(0);
+
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % paragraphs.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+      }, [paragraphs.length]);
     const handleLogout = () => {
         // 로컬 스토리지에서 토큰 삭제
         localStorage.removeItem('accessToken');
@@ -166,11 +182,20 @@ function Camera() {
                     </div>
                 </div>
                 {loading && (
-                    <div className="modal">
-                        <div className="modal-content">
-                            <p>파일을 업로드 중입니다...</p>
-                        </div>
-                    </div>
+                     <div className="modal">
+                        
+                     <div className="modal-content">
+                        <span>사진을 분석 중입니다...</span>
+                        <img src={imageUrl} alt="Uploaded" style={{width:"150px",height:"150px",marginTop:"20px"}}/>
+                        <span style={{fontSize:"15px",color:"black",paddingTop:"20px"}}>틈새 꿀팁!!</span>
+                       {paragraphs.map((text, index) => (
+                        
+                         <p key={index} className={index === currentIndex ? "active" : ""}>
+                           {text}
+                         </p>
+                       ))}
+                     </div>
+                   </div>
                 )}
             </div>
 

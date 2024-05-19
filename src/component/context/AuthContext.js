@@ -47,6 +47,6 @@ export const AuthContextProvider = ({ children }) => {
   );
 };
 /*
-console.log(localStorage.getItem('accessToken'));
-console.log(localStorage.getItem('userAccountname'));
+  console.log(localStorage.getItem('accessToken'));
+  console.log(localStorage.getItem('userAccountname'));
 */

@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import * as S from './Kakao.style';
 import leftAngle from '../assets/icon/angle-small-left.svg';
 import rightAngle from '../assets/icon/angle-small-right.svg';
-import reSearch from '../assets/icon/reSearch.png';
+import reSearch from '../assets/icon/research-icon.svg';
 import Modal from './modal';
 
 const { kakao } = window;

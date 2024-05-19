@@ -27,6 +27,9 @@ function VaccinPage() {
     let [vaccinmod, setVaccinmod] = useState(false);
     const selectedVaccinData = vaccindata1.find(item => item.name == vaccin && item.num === vaccinyn);
     const ReactDatePicker = () => {
+        const handleFocus = (e) => {
+            e.target.blur();
+          };
 
 
         return (
@@ -35,7 +38,7 @@ function VaccinPage() {
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     dateFormat="yyyy년-MM월-dd일"
-                   
+                    onFocus={handleFocus}
                 />
             </div>
         );

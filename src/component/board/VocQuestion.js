@@ -6,19 +6,18 @@ import './VocQuestion.css';
 
 function VocQuestion() {
   const [title, setTitle] = useState('');
-  const [contents, setContents] = useState('');  // 필드 이름 변경
-  const { accessToken, userAccountname } = useContext(AuthContext);
+  const [contents, setContents] = useState('');
+  const { accessToken } = useContext(AuthContext);
 
   const handleQuestionSubmit = async () => {
     const body = {
       title: title,
-      contents: contents,  // 필드 이름 변경
-      username: userAccountname  // 작성자 이름 추가
+      contents: contents
     };
-    
+
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`
+      'Authorization': accessToken
     };
 
     try {
