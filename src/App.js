@@ -14,9 +14,12 @@ import Map from './component/map';
 import Voc from './component/board/Voc';
 import VocQuestion from './component/board/VocQuestion';
 import VocView from './component/board/VocView';
-import Chatbot from './component/Chatbot';
 import CBOT from './component/cbot';
 import { AuthContextProvider } from './component/context/AuthContext';
+import PostModal from './component/postmodal';
+import EditPost from './component/board/EditPost';
+import Board from './component/Board';
+import PostDetail from './component/PostDetail';
 
 
 function App() {
@@ -36,9 +39,10 @@ function App() {
         <Route path="/camera" element={<Camera/>}></Route>
         <Route path="/map" element={<Map/>} ></Route>
         <Route path="/chatbot" element={<CBOT/>} ></Route>
-        <Route path="/board" element={<Voc/>} ></Route>
+        <Route path="/board" element={<Board/>} ></Route>
         <Route path='/Voc/question' element={<VocQuestion />}  />
-        <Route path='/Voc/:vocId' element={<VocView />}  />
+        <Route path='/Voc/:vocId' element={<PostDetail />}  />
+        <Route path="/edit/:postId" element={<EditPost />} />
       </Routes>
       </AuthContextProvider>
     </div>
