@@ -62,13 +62,13 @@ function Main() {
     }, [currentImageIndex]);
     return (
 
-        <div style={{ overflowX: "hidden",height:"880px"}} >
+        <div style={{ overflowX: "hidden",height:"660px"}} >
             <div className='MainTopLogoBox' style={{paddingTop:"100px"}}>
                 <div className='MainSectionTopBox' style={{ marginTop: "180px!!important" }}>
 
 
-                    <h6 style={{ marginTop: "20px", marginBottom: "10px", color: "grey" }}>자신의 반려견 또는 유기견을 찍어보세요!</h6>
-                    <h3 style={{ margin: "0" }}>질병분석,견종분석 기능 포함</h3>
+                    <h6 style={{ marginTop: "20px", marginBottom: "10px", color: "grey" }}>자신의 반려견 또는 유기견을 찍고 관리하세요!</h6>
+                    <h3 style={{ margin: "0" }}>피부병분석,견종분석 기능</h3>
                     <Link to="/camera"><button className='MainSectionTopButton'>촬영하러 가기</button></Link>
                 </div>
             </div>
@@ -81,19 +81,19 @@ function Main() {
 
                     <div className='MainSectionLogo' style={{ marginTop: "20px" }}>
                         <p>10대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar1}%`, backgroundColor: "#e84f13", height: "10px" ,transition: "width 1s ease-in-out"}}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar1}%`, backgroundColor: "#e84f13", height: "8px" ,transition: "width 1s ease-in-out"}}></div>
                     </div>
                     <div className='MainSectionLogo'>
                         <p>20대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar2}%`, backgroundColor: "#e84f13", height: "10px" ,transition: "width 1s ease-in-out"}}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar2}%`, backgroundColor: "#e84f13", height: "8px" ,transition: "width 1s ease-in-out"}}></div>
                     </div>
                     <div className='MainSectionLogo'>
                         <p>30대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar3}%`, backgroundColor: "#e84f13", height: "10px",transition: "width 1s ease-in-out" }}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar3}%`, backgroundColor: "#e84f13", height: "8px",transition: "width 1s ease-in-out" }}></div>
                     </div>
                     <div className='MainSectionLogo'>
                         <p>40대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar4}%`, backgroundColor: "#e84f13", height: "10px",transition: "width 1s ease-in-out" }}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar4}%`, backgroundColor: "#e84f13", height: "8px",transition: "width 1s ease-in-out" }}></div>
                     </div>
                 </div>
                 <div className='MainSectionLogoBoxSection'>
@@ -104,19 +104,19 @@ function Main() {
 
                     <div className='MainSectionLogo' style={{ marginTop: "20px" }}>
                         <p>10대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar1}%`, backgroundColor: "#e84f13", height: "10px",transition: "width 1s ease-in-out" }}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar1}%`, backgroundColor: "#e84f13", height: "8px",transition: "width 1s ease-in-out" }}></div>
                     </div>
                     <div className='MainSectionLogo'>
                         <p>20대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar2}%`, backgroundColor: "#e84f13", height: "10px",transition: "width 1s ease-in-out" }}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar2}%`, backgroundColor: "#e84f13", height: "8px",transition: "width 1s ease-in-out" }}></div>
                     </div>
                     <div className='MainSectionLogo'>
                         <p>30대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar3}%`, backgroundColor: "#e84f13", height: "10px",transition: "width 1s ease-in-out" }}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar3}%`, backgroundColor: "#e84f13", height: "8px",transition: "width 1s ease-in-out" }}></div>
                     </div>
                     <div className='MainSectionLogo'>
                         <p>40대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar4}%`, backgroundColor: "#e84f13", height: "10px",transition: "width 1s ease-in-out" }}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar4}%`, backgroundColor: "#e84f13", height: "8px",transition: "width 1s ease-in-out" }}></div>
                     </div>
                 </div>
                 <div className='MainSectionLogoBoxSection'>
@@ -127,25 +127,25 @@ function Main() {
 
                     <div className='MainSectionLogo' style={{ marginTop: "20px" }}>
                         <p>10대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar1}%`, backgroundColor: "#e84f13", height: "10px",transition: "width 1s ease-in-out" }}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar1}%`, backgroundColor: "#e84f13", height: "8px",transition: "width 1s ease-in-out" }}></div>
                     </div>
                     <div className='MainSectionLogo'>
                         <p>20대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar2}%`, backgroundColor: "#e84f13", height: "10px" ,transition: "width 1s ease-in-out"}}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar2}%`, backgroundColor: "#e84f13", height: "8px" ,transition: "width 1s ease-in-out"}}></div>
                     </div>
                     <div className='MainSectionLogo'>
                         <p>30대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar3}%`, backgroundColor: "#e84f13", height: "10px",transition: "width 1s ease-in-out" }}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar3}%`, backgroundColor: "#e84f13", height: "8px",transition: "width 1s ease-in-out" }}></div>
                     </div>
                     <div className='MainSectionLogo'>
                         <p>40대 인기층</p>
-                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar4}%`, backgroundColor: "#e84f13", height: "10px" ,transition: "width 1s ease-in-out"}}></div>
+                        <div className="MainSecionGage" style={{ width: `${gagebars.gagebar4}%`, backgroundColor: "#e84f13", height: "8px" ,transition: "width 1s ease-in-out"}}></div>
                     </div>
                 </div>
 
             </div>
 
-            <button style={{ marginTop: "30px" }}className="before" onClick={handlePreviousClick}>이전</button>
+            <button style={{ marginTop: "11px" }}className="before" onClick={handlePreviousClick}>이전</button>
             <button style={{ marginBottom: "80px" }} className="next" onClick={handleNextClick}>다음</button>
         </div>
 

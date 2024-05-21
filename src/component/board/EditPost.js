@@ -43,10 +43,10 @@ const EditPost = () => {
 
   return (
     <Box sx={{ p: 3 }}>
-      <Typography variant="h4" mb={3}>Edit Post</Typography>
+      <Typography variant="h4" mb={3}>게시글 수정</Typography>
       <form onSubmit={handleSubmit}>
         <TextField
-          label="Title"
+          label="제목"
           name="title"
           value={post.title}
           onChange={handleInputChange}
@@ -54,7 +54,7 @@ const EditPost = () => {
           margin="normal"
         />
         <TextField
-          label="Contents"
+          label="내용"
           name="contents"
           value={post.contents}
           onChange={handleInputChange}
@@ -64,8 +64,8 @@ const EditPost = () => {
           rows={4}
         />
         <Box mt={2}>
-          <Button type="submit" variant="contained" color="error">Save</Button>
-          <Button onClick={() => navigate(-1)} variant="outlined" color="secondary" sx={{ ml: 2 }}>Cancel</Button>
+          <Button type="submit" variant="contained" color="error">등록하기</Button>
+          <Button onClick={() => navigate(-1)} variant="outlined" color="secondary" sx={{ ml: 2 }}>취소</Button>
         </Box>
       </form>
     </Box>

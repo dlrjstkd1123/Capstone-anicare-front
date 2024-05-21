@@ -63,7 +63,7 @@ const VocQuestion = () => {
           rows={4}
         />
         <Box mt={2}>
-          <Button type="submit" variant="contained" color="primary">등록</Button>
+          <Button type="submit" variant="contained" color="error">등록</Button>
           <Button onClick={() => setTitle('') & setContents('')} variant="outlined" color="secondary" sx={{ ml: 2 }}>취소</Button>
         </Box>
       </form>

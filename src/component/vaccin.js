@@ -64,7 +64,7 @@ function VaccinPage() {
 
 
     return (
-        <div className="Vaccinpage" style={{height:"910px"}} >
+        <div className="Vaccinpage" style={{height:"800px"}} >
             <div className="Mainpage">
                 <div className={`MainTopNav ${isScrolled ? 'hidden' : ''}`}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -125,9 +125,9 @@ function VaccinPage() {
                 <div className='MainSectionTopBox' style={{ marginBottom: "10px" }}>
 
 
-                    <h6 style={{ marginTop: "20px", marginBottom: "5px", color: "grey" }}>자신의 반려견 또는 유기견을 찍어보세요!</h6>
-                    <h3 style={{ margin: "0" }}>질병분석,견종분석 기능 포함</h3>
-                    <Link to="/camera"><button className='MainSectionTopButton'>촬영하러 가기</button></Link>
+                    <h6 style={{ marginTop: "20px", marginBottom: "5px", color: "grey" }}>자신의 반려견 또는 유기견을 찍고 관리하세요!</h6>
+                    <h3 style={{ margin: "0" }}>피부병분석,견종분석 기능</h3>
+                    <Link to="/camera"><button className='MainSectionTopButton' style={{marginBottom:"20px"}} >촬영하러 가기</button></Link>
                 </div>
             </div>
 

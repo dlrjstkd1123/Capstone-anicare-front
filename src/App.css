@@ -84,7 +84,7 @@
   width: 100vW; /* 한 번에 하나의 섹션이 보이도록 너비를 조정합니다. */
   display: inline-block; /* 인라인 블록 요소로 설정하여 요소들을 옆으로 나열합니다. */
   vertical-align: top;
-  
+  margin-left: 1%;
   overflow-x: hidden;/* 섹션을 위쪽에 정렬합니다. */
 }
 
@@ -101,22 +101,22 @@
 
 
 .mainSectionImg {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   margin-top: 6%;
   border-radius: 20px;
   border: 1px solid rgb(209, 204, 204);
 }
 .mainSectionText{
   margin-left: 5%;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 }
 .MainSectionLogo{
   display: flex;
   padding-left: 5%;
   align-items: center;
-  height: 40px;
+  height: 30px;
 }
 .MainTopLogoBox{
   width: 90%;

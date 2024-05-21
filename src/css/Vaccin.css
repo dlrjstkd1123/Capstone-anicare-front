@@ -46,8 +46,8 @@
 
 .react-datepicker__input-container>input {
     text-align: center;
-    height: 25px;
-    border-radius: 10px;
+    height: 23px;
+    border-radius: 7px;
     border: 2px solid #e84f13;
     font-weight: 600;
 
@@ -74,6 +74,7 @@
 
 .vaccinselect {
     font-size: 10px;
+    color: black;
 }
 
 .VaccinSelected {
@@ -202,6 +203,14 @@
     width: 60%;
     line-height: 35px;
     height: 35px; /* 너비 지정 */
+    margin-top: 0;
+    margin-bottom: 0;
     margin-left: auto; /* 좌우 마진을 자동으로 설정하여 가운데 정렬 */
     margin-right: auto; /* 좌우 마진을 자동으로 설정하여 가운데 정렬 */
+}
+.GridContainernum{
+padding-top: 0;
+}
+.css-qwfiov-MuiGrid-root>.MuiGrid-item {
+    padding-top: 13px!important;
 }

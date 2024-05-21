@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from './context/AuthContext';  // AuthContext 가져오기
@@ -12,6 +12,10 @@ function Login() {
   const [usernameError, setUsernameError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
   const [error, setError] = useState(null);
+
+  const usernameInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
+  const dummyDivRef = useRef(null); // 포커스를 옮길 더미 div
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,6 +51,16 @@ function Login() {
         console.log('Login successful, token received:', accessToken);  // 디버깅용 콘솔 출력
         login(accessToken, username); // 로그인 시 AuthContext에 사용자 이름과 토큰 저장
         setLoggedIn(true);
+
+        // 포커스를 더미 div로 옮겨 키보드를 닫습니다
+        if (dummyDivRef.current) {
+          dummyDivRef.current.focus();
+        }
+
+        // 페이지 이동을 잠시 지연
+        setTimeout(() => {
+          setLoggedIn(true);
+        }, 50); // 100ms 지연
       } else {
         setError('토큰을 찾을 수 없습니다.');
       }
@@ -81,17 +95,32 @@ function Login() {
         <p>저희 사이트에 오신 걸 환영합니다!!</p>
       </div>
       <form className="LoginInputContainer" style={{ textAlign: "center" }} onSubmit={handleSubmit}>
-        <input type="text" placeholder="아이디" value={username} onChange={(e) => setUsername(e.target.value)} />
-        {usernameError && <div className="error" style={{fontSize:'13px',color:"red"}}>{usernameError}</div>}
-        <input type="password" placeholder="비밀번호" value={password} onChange={(e) => setPassword(e.target.value)} />
-        {passwordError && <div className="error" style={{fontSize:'13px',color:"red"}}>{passwordError}</div>}
+        <input
+          type="text"
+          placeholder="아이디"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          style={{ fontSize: '16px' }}
+          ref={usernameInputRef}
+        />
+        {usernameError && <div className="error" style={{ fontSize: '13px', color: "red" }}>{usernameError}</div>}
+        <input
+          type="password"
+          placeholder="비밀번호"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ fontSize: '16px' }}
+          ref={passwordInputRef}
+        />
+        {passwordError && <div className="error" style={{ fontSize: '13px', color: "red" }}>{passwordError}</div>}
         <button type="submit">로그인</button>
       </form>
-      
       <div className="LoginBottom">
         <p><span>아이디가 없으십니까?</span>
           <Link to="/signup" style={{ color: "#e84f13" }}> <span style={{ fontWeight: "600", textDecoration: "underline" }}>SignUp</span></Link></p>
       </div>
+      {/* 키보드를 숨기기 위해 포커스를 옮길 더미 div */}
+      <div ref={dummyDivRef} tabIndex="-1" style={{ position: 'absolute', left: '-9999px' }}></div>
     </div>
   );
 }
