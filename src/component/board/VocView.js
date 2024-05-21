@@ -10,7 +10,7 @@ import { request } from '../request';
 function VocView() {
   const { vocId } = useParams();
   const [post, setPost] = useState({});
-  const [comments, setComments] = useState([]);  // 여기에 setComments를 추가했습니다.
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [showCommentModal, setShowCommentModal] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
@@ -20,9 +20,7 @@ function VocView() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://3.38.225.120:8080/api/post/${vocId}`);
-        const { post, comments } = response.data.response;
-        setPost(post);
-        setComments(comments);  // 여기에 setComments를 사용했습니다.
+        setPost(response.data.response);
       } catch (error) {
         console.error("Error fetching the post data:", error);
       }
@@ -31,11 +29,24 @@ function VocView() {
     fetchData();
   }, [vocId]);
 
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await axios.get(`http://3.38.225.120:8080/api/comment/${vocId}`);
+        setComments(response.data.response);
+      } catch (error) {
+        console.error("Error fetching the comments:", error);
+      }
+    };
+
+    fetchComments();
+  }, [vocId]);
+
   const handleAddComment = async () => {
     if (!newComment) return;
     try {
       const response = await request(`http://3.38.225.120:8080/api/comment/${vocId}`, 'POST', { contents: newComment }, userToken);
-      setComments((prevComments) => [...prevComments, response.data.response]);  // 여기에 setComments를 사용했습니다.
+      setComments([...comments, response]);
       setNewComment('');
     } catch (error) {
       console.error("Error adding the comment:", error);
@@ -94,7 +105,7 @@ function VocView() {
               </ListItemAvatar>
               <ListItemText
                 primary={comment.author}
-                secondary={comment.contents}
+                secondary={comment.content}
               />
               <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteClick(comment.id)}>
                 <DeleteIcon />

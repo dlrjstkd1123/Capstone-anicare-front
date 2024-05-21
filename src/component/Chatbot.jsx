@@ -8,7 +8,7 @@ const Chatbot = ({ initialMessage }) => {
   const [loading, setLoading] = useState(false);
   const hasSentInitialMessageRef = useRef(false); // Ref 사용하여 중복 방지
 
-  const apiKey = 'sk-proj-3i1vojApHnuC7cZdrduqT3BlbkFJQE266BtocZMZH00EWWwr';
+  const apiKey = 'sk-acpbot-Z1ovnurbO2qM2eiTnTUST3BlbkFJp44o5YxpduU1hWErpxJR';
   const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
   const persona = "당신은 강아지 전문가 애케플입니다. 유머가 넘치고 친절한 성격의 챗봇입니다. 재치 있는 농담을 좋아하며 항상 즐겁게 대화합니다.";
@@ -69,7 +69,7 @@ const Chatbot = ({ initialMessage }) => {
 
   return (
     <Box sx={{ p: 2, maxWidth: 600, mx: 'auto', margintop: "50px" }}>
-      <Paper style={{ maxHeight: 600, overflow: 'auto' }}>
+      <Paper style={{ maxHeight: 500, overflow: 'auto' }}>
         {messages.map((msg, index) => (
           <Box key={index} sx={{ margin: 1, textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
             <Paper elevation={3} sx={{ display: 'inline-block', padding: 2 }}>

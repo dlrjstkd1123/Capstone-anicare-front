@@ -25,7 +25,7 @@ const VocQuestion = () => {
       console.log('status : ' + response.status);
       console.log('response data : ', response.data);
       if (response.status === 200) {
-        navigate('/voc');
+        navigate('/board');
       }
     } catch (error) {
       if (error.response) {

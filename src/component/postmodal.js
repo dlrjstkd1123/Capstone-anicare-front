@@ -29,17 +29,20 @@ const PostModal = ({ onClose, postId, posts, setPosts, postAuthor, author, pathn
   }, [userAccountname, postAuthor]);
 
   const optionClick = (option) => {
+    console.log(`Option clicked: ${option}`);
     if (option === '삭제') {
       setSelectedOption(option);
+      closeModal('삭제'); // 삭제 옵션 클릭 시 바로 closeModal 호출
     } else if (option === '수정') {
       navigate(`/edit/${postId}`);
     }
   };
 
   const closeModal = async (option) => {
+    console.log(`Close modal with option: ${option}`);
     if (option === '삭제') {
       await fetchDelete(postId, accessToken);
-      setPosts(posts.filter((post) => post.id !== postId));
+      setPosts(posts.filter((post) => post.id !== postId)); // 상태 업데이트
       if (pathname === `/vocview/${postId}`) {
         navigate(-1);
       }
@@ -50,11 +53,12 @@ const PostModal = ({ onClose, postId, posts, setPosts, postAuthor, author, pathn
     }
   };
 
-  const fetchDelete = async () => {
+  const fetchDelete = async (postId, accessToken) => {
     try {
       await deletePost(postId, accessToken);
+      console.log(`Post ${postId} deleted successfully`);
     } catch (error) {
-      console.error(error);
+      console.error(`Failed to delete post ${postId}:`, error);
     }
   };
 

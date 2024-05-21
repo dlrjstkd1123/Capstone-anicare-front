@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import VocHeader from './VocHeader';
@@ -37,16 +37,30 @@ function parseCustomDate(dateString) {
   return new Date(year, month, day, hour, minute, second);
 }
 
-function GetData({ handlePostClick, handleMenuClick }) {
+function GetData({ handlePostClick, handleMenuClick, tabValue }) {
   const [data, setData] = useState([]);
   const [postContents, setPostContents] = useState({});
 
   useEffect(() => {
-    axios.get('http://3.38.225.120:8080/api/posts').then((response) => {
+    const fetchData = async () => {
+      let response;
+      if (tabValue === 0) {
+        response = await axios.get('http://3.38.225.120:8080/api/posts');
+      } else if (tabValue === 1) {
+        response = await axios.get('http://3.38.225.120:8080/api/posts');
+        response.data.response = response.data.response.filter(post => post.likeCount >= 10);
+      } else if (tabValue === 2) {
+        // Fetch 뉴스 data using Python script
+        response = await axios.get('/path-to-news-data');
+      } else if (tabValue === 3) {
+        // Fetch 칼럼 data using Python script
+        response = await axios.get('/path-to-column-data');
+      }
       const sortedData = response.data.response.sort((a, b) => b.id - a.id);
       setData(sortedData);
-    });
-  }, []);
+    };
+    fetchData();
+  }, [tabValue]);
 
   useEffect(() => {
     const fetchContent = async (id) => {
@@ -95,7 +109,7 @@ function GetData({ handlePostClick, handleMenuClick }) {
                   </Typography>
                   <Box display="flex" justifyContent="space-between">
                     <Typography component="span" variant="body2" color="text.secondary">
-                    {formattedDate}  ·  좋아요 1  · 댓글 {voc.commentCount}
+                      {formattedDate}  ·  좋아요 {voc.likeCount}  · 댓글 {voc.commentCount}
                     </Typography>
                   </Box>
                 </>
@@ -145,7 +159,15 @@ function Voc() {
     setTabValue(newValue);
   };
 
-  const items = GetData({ handlePostClick, handleMenuClick });
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await axios.get('http://3.38.225.120:8080/api/posts');
+      setPosts(response.data.response);
+    };
+    fetchPosts();
+  }, []);
+
+  const items = GetData({ handlePostClick, handleMenuClick, tabValue });
 
   return (
     <Box sx={{ position: 'relative', width: '100%' }}>
