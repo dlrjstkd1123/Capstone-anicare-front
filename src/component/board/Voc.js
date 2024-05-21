@@ -23,18 +23,17 @@ import { formatDistanceToNow } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
 function parseCustomDate(dateString) {
-  if (!dateString || dateString.length !== 14) {
+  if (!dateString || dateString.length < 12) {
     return new Date(); // 날짜 값이 없거나 형식이 잘못된 경우 현재 날짜를 반환
   }
-  
+
   const year = parseInt(dateString.slice(0, 4), 10);
   const month = parseInt(dateString.slice(4, 6), 10) - 1; // JavaScript months are 0-11
   const day = parseInt(dateString.slice(6, 8), 10);
   const hour = parseInt(dateString.slice(8, 10), 10);
   const minute = parseInt(dateString.slice(10, 12), 10);
-  const second = parseInt(dateString.slice(12, 14), 10);
 
-  return new Date(year, month, day, hour, minute, second);
+  return new Date(year, month, day, hour, minute);
 }
 
 function GetData({ handlePostClick, handleMenuClick, tabValue }) {

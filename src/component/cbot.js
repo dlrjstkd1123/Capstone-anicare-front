@@ -90,7 +90,7 @@ function CBOT() {
 
             </div>
             <div style={{ marginTop: '100px', }}>
-            <Chatbot initialMessage={question || '안녕하세요! 무엇을 도와드릴까요?'} />
+            <Chatbot initialMessage={question || '안녕하세요! 반가워요'} />
             </div>
         </div>
 
