@@ -7,12 +7,6 @@ const VocHeader = props => {
 
   return (
     <div className="voc-header">
-        <h2 align="left">Q/A</h2>
-        <Link to='/voc/question'>
-            <button align="right" className="voc-view-go-list-btn" >
-            게시글 작성
-            </button>
-        </Link>
     </div>
   )
 }

@@ -38,3 +38,13 @@
     font-family : "Noto Sans KR", sans-serif;
     
 }
+
+.VocContainer {
+    margin-top: 110px; /* 상단 내비게이션 바 높이만큼 아래로 밀어줌 */
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.PostContainer {
+    margin-top: 100px;
+}

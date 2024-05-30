@@ -7,7 +7,7 @@ export const request = async (url, method, data, userToken) => {
       method: method,
       data: data,
       headers: {
-        Authorization: `Bearer ${userToken}`
+        Authorization: userToken
       }
     };
     const response = await axios(url, options);

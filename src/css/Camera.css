@@ -120,7 +120,13 @@
     max-width: 300px;
     text-align: center;
     position: relative;
+<<<<<<< HEAD
     height: 100px; /* height set for the p elements to show in fixed size */
+=======
+    font-size: 15px;
+    border-radius: 15px;
+    height: 300px; /* height set for the p elements to show in fixed size */
+>>>>>>> test3
     overflow: hidden;
   }
   
@@ -128,8 +134,21 @@
     position: absolute;
     opacity: 0;
     transition: opacity 1s;
+<<<<<<< HEAD
+=======
+    padding-top: 240px;
+    margin: 10px;
+>>>>>>> test3
   }
   
   .modal-content p.active {
     opacity: 1;
+<<<<<<< HEAD
+=======
+  }
+  .modal-content > span{
+    font-size: 20px;
+    color: #e84f13;
+  
+>>>>>>> test3
   }

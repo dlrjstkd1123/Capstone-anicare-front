@@ -57,3 +57,7 @@
 .error{
     margin-bottom: 15px;
 }
+.Login input[type="text"],
+.Login input[type="password"] {
+    font-size: 16px;
+}

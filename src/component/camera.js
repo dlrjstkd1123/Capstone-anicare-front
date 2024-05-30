@@ -18,7 +18,10 @@ function Camera() {
     const [loading, setLoading] = useState(false); // 로딩 상태 추가
     const ctxProviderRef = useRef(null);
     const paragraphs = [
+<<<<<<< HEAD
         "파일을 업로드 중입니다...",
+=======
+>>>>>>> test3
         "강아지의 집은 화장실과 멀리 떨어진 곳에 위치하는 걸 아시나요?",
         "강아지가 귀여워도 소리 지르지 말기!",
         "강아지와의 첫 접촉은 손 냄새 맡게 하기!",
@@ -105,7 +108,7 @@ function Camera() {
             console.log('File uploaded successfully:', response);
             alert("파일이 성공적으로 업로드되었습니다.");
             const responseData = response.data;
-            const question = `강아지 전문가야 한글로 ${responseData} 견종의 케어법을 다섯줄 이내로 알려줘`;
+            const question = `강아지 전문가 애케플! 한글로 ${responseData} 견종의 케어법을 다섯줄 이내로 알려줘~`;
             navigate('/chatbot', { state: { question } });
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -184,8 +187,18 @@ function Camera() {
                 </div>
                 {loading && (
                      <div className="modal">
+<<<<<<< HEAD
                      <div className="modal-content">
                        {paragraphs.map((text, index) => (
+=======
+                        
+                     <div className="modal-content">
+                        <span>사진을 분석 중입니다...</span>
+                        <img src={imageUrl} alt="Uploaded" style={{width:"150px",height:"150px",marginTop:"20px"}}/>
+                        <span style={{fontSize:"15px",color:"black",paddingTop:"20px"}}>틈새 꿀팁!!</span>
+                       {paragraphs.map((text, index) => (
+                        
+>>>>>>> test3
                          <p key={index} className={index === currentIndex ? "active" : ""}>
                            {text}
                          </p>

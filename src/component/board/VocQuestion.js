@@ -1,30 +1,32 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthContext';  // 경로 확인 필요
+import { AuthContext } from '../context/AuthContext';
+import { TextField, Button, Box, Typography } from '@mui/material';
+import withNavigation from './withNavigation';
+import { useNavigate } from 'react-router-dom';
 
-import './VocQuestion.css';
-
-function VocQuestion() {
+const VocQuestion = () => {
   const [title, setTitle] = useState('');
-  const [contents, setContents] = useState('');  // 필드 이름 변경
-  const { accessToken, userAccountname } = useContext(AuthContext);
+  const [contents, setContents] = useState('');
+  const { accessToken } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleQuestionSubmit = async () => {
-    const body = {
-      title: title,
-      contents: contents,  // 필드 이름 변경
-      username: userAccountname  // 작성자 이름 추가
-    };
-    
+  const handleQuestionSubmit = async (e) => {
+    e.preventDefault();
+    const body = { title, contents };
+
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`
+      'Authorization': accessToken
     };
 
     try {
       const response = await axios.post('http://3.38.225.120:8080/api/post', body, { headers });
       console.log('status : ' + response.status);
       console.log('response data : ', response.data);
+      if (response.status === 200) {
+        navigate('/board');
+      }
     } catch (error) {
       if (error.response) {
         console.error('Error response data: ', error.response.data);
@@ -39,21 +41,34 @@ function VocQuestion() {
   };
 
   return (
-    <>
-      <h2 align="center">게시글 작성</h2>
-      <div className="voc-view-wrapper">
-        <div className="voc-view-row">
-          <label>제목</label>
-          <input type="text" onChange={(event) => setTitle(event.target.value)} />
-        </div>
-        <div className="voc-view-row">
-          <label>내용</label>
-          <textarea onChange={(event) => setContents(event.target.value)} />
-        </div>
-        <button className="voc-view-go-list-btn" onClick={handleQuestionSubmit}>등록</button>
-      </div>
-    </>
+    <Box sx={{ p: 3 }}>
+      <Typography variant="h4" mb={3}>게시글 작성</Typography>
+      <form onSubmit={handleQuestionSubmit}>
+        <TextField
+          label="제목"
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="내용"
+          name="contents"
+          value={contents}
+          onChange={(e) => setContents(e.target.value)}
+          fullWidth
+          margin="normal"
+          multiline
+          rows={4}
+        />
+        <Box mt={2}>
+          <Button type="submit" variant="contained" color="error">등록</Button>
+          <Button onClick={() => setTitle('') & setContents('')} variant="outlined" color="secondary" sx={{ ml: 2 }}>취소</Button>
+        </Box>
+      </form>
+    </Box>
   );
-}
+};
 
-export default VocQuestion;
+export default withNavigation(VocQuestion);
